@@ -7,7 +7,7 @@
     @endif
 
     <div class="flex flex-col gap-2">
-        <x-forms.input name="name" type="text" label="Name*" :value="auth()->user()->name" readonly />
+        <x-forms.input name="name" type="text" label="Name*" :value="auth()->user()->name ?? null" readonly />
         <x-forms.input name="message" type="textarea" label="Message*" rows="5" wire:model.defer="message" />
     </div>
 

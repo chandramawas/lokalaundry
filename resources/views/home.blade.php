@@ -41,9 +41,27 @@
             </div>
 
             {{-- Make Feedback --}}
-            <div class="p-4 border border-primary rounded-xl flex flex-col gap-4 h-full">
-                <h3 class="text-xl font-bold text-primary">Give us your feedback!</h3>
-                <livewire:feedback-form />
+            <div class="relative p-4 border border-primary rounded-xl flex flex-col gap-4 h-full">
+                <h3 class="text-xl font-bold text-primary z-10 relative">Give us your feedback!</h3>
+
+                {{-- Form --}}
+                <div class="flex-1">
+                    <livewire:feedback-form />
+                </div>
+
+                {{-- Overlay for Guest --}}
+                @guest
+                    <div
+                        class="absolute inset-0 bg-white/80 backdrop-blur-xs flex flex-col items-center justify-center z-20 rounded-xl text-center p-4">
+                        <p class="text-on-surface-variant text-sm mb-4">
+                            You need to
+                            <x-buttons.text-button href="{{ route('login') }}" class="text-primary font-bold">
+                                Login
+                            </x-buttons.text-button>
+                            first to send feedback!
+                        </p>
+                    </div>
+                @endguest
             </div>
         </div>
     </x-ui.section-container>
