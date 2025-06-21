@@ -37,40 +37,13 @@
         <div class="grid grid-cols-2 gap-4 h-[400px]">
             {{-- Customer Feedback --}}
             <div class="p-4 border border-primary rounded-xl flex flex-col gap-4 h-full overflow-hidden">
-                <div class="flex-1 overflow-y-auto pr-2 space-y-4">
-                    @forelse ($feedbacks as $feedback)
-                        <x-ui.customer-feedback username="{{ $feedback->user->name }}"
-                            createdAt="{{ $feedback->created_at->diffForHumans() }}">
-                            {{ $feedback->message }}
-                        </x-ui.customer-feedback>
-                    @empty
-                        <div class="text-center text-sm text-on-surface-variant">
-                            No feedback available yet.
-                        </div>
-                    @endforelse
-                </div>
+                <livewire:feedback-list />
             </div>
 
             {{-- Make Feedback --}}
             <div class="p-4 border border-primary rounded-xl flex flex-col gap-4 h-full">
-                <h3 class="text-xl font-bold text-primary">Give your feedback!</h3>
-                @if (session('success'))
-                    <div class="p-2 bg-green-100 text-green-800 rounded-md text-sm">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                <form action="{{ route('feedback.store') }}" method="post"
-                    class="flex flex-col flex-1 gap-2 justify-between">
-                    @csrf
-                    <div class="flex flex-col gap-2">
-                        <x-forms.input name="name" type="text" label="Name*" value="{{ Auth::user()->name }}"
-                            readonly />
-                        <x-forms.input name="message" type="textarea" label="Message*" rows="5" />
-                    </div>
-                    <div class="flex justify-end">
-                        <x-buttons.button type="submit">Submit</x-buttons.button>
-                    </div>
-                </form>
+                <h3 class="text-xl font-bold text-primary">Give us your feedback!</h3>
+                <livewire:feedback-form />
             </div>
         </div>
     </x-ui.section-container>

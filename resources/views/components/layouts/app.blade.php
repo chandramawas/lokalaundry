@@ -17,6 +17,8 @@
 
     {{-- Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
 <body class="bg-surface text-on-surface font-sans antialiased cursor-default">
@@ -111,6 +113,8 @@
             </p>
         </div>
     </footer>
+
+    @livewireScripts
 </body>
 
 </html>

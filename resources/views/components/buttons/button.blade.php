@@ -10,11 +10,11 @@
 @endphp
 
 @if ($href)
-    <a href="{{ $href }}" class="{{ $finalClass }}">
+    <a href="{{ $href }}" {{ $attributes->merge(['class' => $finalClass]) }}>
         {{ $slot }}
     </a>
 @else
-    <button type="{{ $type }}" class="{{ $finalClass }}">
+    <button type="{{ $type }}" {{ $attributes->merge(['class' => $finalClass]) }}>
         {{ $slot }}
     </button>
 @endif

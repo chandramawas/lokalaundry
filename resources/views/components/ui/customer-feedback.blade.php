@@ -10,6 +10,6 @@
             {{ $username }}
             <span class="text-on-surface-variant font-normal text-xs">{{ $createdAt }}</span>
         </p>
-        <p class="text-sm">{{ $slot }}</p>
+        <p class="text-sm text-pretty">{{ $slot }}</p>
     </div>
 </div>
