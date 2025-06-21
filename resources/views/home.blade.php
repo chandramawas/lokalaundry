@@ -1,10 +1,9 @@
-<x-layouts.app title="Beranda Laundry">
+<x-layouts.app title="Home">
     {{-- Hero --}}
-    <section id="hero" class="relative h-[calc(100vh-96px)] overflow-hidden rounded-4xl">
+    <section id="hero" class="relative h-[calc(100vh-96px)] overflow-hidden">
         {{-- Background Image --}}
         <div class="absolute inset-0 z-0 opacity-30">
-            <img src="{{ asset('images/laundry_coin.jpg') }}" alt="Laundry Background"
-                class="w-full h-full object-cover" />
+            <img src="{{ asset('images/laundry_coin.jpg') }}" class="w-full h-full object-cover" />
         </div>
 
         {{-- Content --}}
@@ -39,20 +38,33 @@
             {{-- Customer Feedback --}}
             <div class="p-4 border border-primary rounded-xl flex flex-col gap-4 h-full overflow-hidden">
                 <div class="flex-1 overflow-y-auto pr-2 space-y-4">
-                    @for ($i = 1; $i <= 20; $i++)
-                        <x-ui.customer-feedback username="User{{ 21 - $i }}" createdAt="{{ 21 - $i }}d">
-                            Ini feedback ke-{{ 21 - $i }}
+                    @forelse ($feedbacks as $feedback)
+                        <x-ui.customer-feedback username="{{ $feedback->user->name }}"
+                            createdAt="{{ $feedback->created_at->diffForHumans() }}">
+                            {{ $feedback->message }}
                         </x-ui.customer-feedback>
-                    @endfor
+                    @empty
+                        <div class="text-center text-sm text-on-surface-variant">
+                            No feedback available yet.
+                        </div>
+                    @endforelse
                 </div>
             </div>
 
             {{-- Make Feedback --}}
             <div class="p-4 border border-primary rounded-xl flex flex-col gap-4 h-full">
                 <h3 class="text-xl font-bold text-primary">Give your feedback!</h3>
-                <form action="" method="post" class="flex flex-col flex-1 gap-2 justify-between">
+                @if (session('success'))
+                    <div class="p-2 bg-green-100 text-green-800 rounded-md text-sm">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <form action="{{ route('feedback.store') }}" method="post"
+                    class="flex flex-col flex-1 gap-2 justify-between">
+                    @csrf
                     <div class="flex flex-col gap-2">
-                        <x-forms.input name="name" type="text" label="Name*" value="John Doe" readonly />
+                        <x-forms.input name="name" type="text" label="Name*" value="{{ Auth::user()->name }}"
+                            readonly />
                         <x-forms.input name="message" type="textarea" label="Message*" rows="5" />
                     </div>
                     <div class="flex justify-end">

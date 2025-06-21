@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Laundry Booking' }}</title>
+    <title>{{ $title ?? 'Booking Sekarang' }} - {{ config('app.name') }}</title>
 
     {{-- Bunny Fonts: Poppins --}}
     <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700" rel="stylesheet" />
 
     {{-- Icons --}}
     <script src="https://kit.fontawesome.com/97124276d4.js" crossorigin="anonymous"></script>
+
+    {{-- JS --}}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     {{-- Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,15 +22,15 @@
 <body class="bg-surface text-on-surface font-sans antialiased cursor-default">
     <div class="min-h-screen">
         {{-- Navbar --}}
-        <nav class="py-8 px-8">
+        <nav class="sticky top-0 z-50 backdrop-blur bg-surface/70 border-b border-on-surface/10 py-6 px-8">
             <div class="max-w-7xl mx-auto text-sm grid grid-cols-3 items-center">
                 {{-- Left --}}
                 <div>
-                    <a href="" class="text-primary font-bold text-lg">BookingLaundry</a>
+                    <a href="{{ route('home') }}" class="text-primary font-bold text-lg">BookingLaundry</a>
                 </div>
 
                 {{-- Mid --}}
-                <div class="justify-self-center space-x-8">
+                <div class="justify-self-center flex gap-8">
                     <x-buttons.nav-button href="{{ route('home') }}">Home</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('outlet') }}">Outlet</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('booking') }}">Booking</x-buttons.nav-button>
@@ -35,9 +38,38 @@
                 </div>
 
                 {{-- Right --}}
-                <div class="justify-self-end space-x-2">
-                    <x-buttons.button href="#login" variant="outline">Login</x-buttons.button>
-                    <x-buttons.button href="#register" variant="primary">Register</x-buttons.button>
+                <div class="justify-self-end flex gap-2">
+                    @auth
+                        <x-buttons.icon-button href="#history" class="h-8 w-8" variant="outline">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </x-buttons.icon-button>
+
+                        <div class="relative" x-data="{ open: false }" @click.away="open = false">
+                            <button @click="open = !open"
+                                class="h-8 w-8 shrink-0 rounded-full overflow-hidden cursor-pointer">
+                                <img src="https://i.pravatar.cc/150?u={{ Auth::user()->name }}" alt="Avatar"
+                                    class="w-full h-full object-cover">
+                            </button>
+
+                            <div x-show="open" x-transition
+                                class="absolute right-0 mt-2 w-50 bg-white border border-gray-200 text-on-surface rounded-lg shadow-lg z-50 text-sm overflow-hidden">
+                                <a href="#profile" class="block px-6 py-3 hover:bg-gray-100 transition">
+                                    <i class="fa-solid fa-user"></i> <span class="ml-1">Profile</span>
+                                </a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-full text-left px-6 py-3 hover:bg-gray-100 transition cursor-pointer">
+                                        <i class="fa-solid fa-right-from-bracket"></i> <span class="ml-1">Logout</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endauth
+                    @guest
+                        <x-buttons.button href="{{ route('login') }}" variant="outline">Login</x-buttons.button>
+                        <x-buttons.button href="{{ route('register') }}" variant="primary">Register</x-buttons.button>
+                    @endguest
                 </div>
             </div>
         </nav>
