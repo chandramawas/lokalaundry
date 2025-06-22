@@ -2,7 +2,8 @@
     {{-- Product Info --}}
     <div class="flex flex-col gap-2">
         <div class="h-40 w-full overflow-hidden flex justify-center rounded">
-            <img src="{{ asset($image) }}" alt="{{ $name }}" class="h-full">
+            <img src="{{ $image ? asset('storage/' . $image) : asset('images/placeholder.jpg') }}" alt="{{ $name }}"
+                class="h-full">
         </div>
         <div class="flex flex-col gap-1">
             <h3 class="text-lg font-semibold">{{ $name }}</h3>

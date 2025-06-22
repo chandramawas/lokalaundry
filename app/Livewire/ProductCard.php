@@ -9,13 +9,13 @@ use Livewire\Component;
 class ProductCard extends Component
 {
     public string $name;
-    public string $image;
+    public ?string $image;
     public int $price;
     public int $quantity = 0;
 
     protected $listeners = ['cartUpdated' => 'refreshQuantity'];
 
-    public function mount($name, $image, $price)
+    public function mount($name, $image = null, $price)
     {
         $this->name = $name;
         $this->image = $image;
