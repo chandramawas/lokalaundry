@@ -36,7 +36,7 @@
                     <x-buttons.nav-button href="{{ route('home') }}">Home</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('outlets') }}">Outlets</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('booking') }}">Booking</x-buttons.nav-button>
-                    <x-buttons.nav-button href="{{ route('product') }}">Products</x-buttons.nav-button>
+                    <x-buttons.nav-button href="{{ route('products') }}">Products</x-buttons.nav-button>
                 </div>
 
                 {{-- Right --}}

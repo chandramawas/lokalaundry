@@ -12,9 +12,9 @@ Route::get('/outlets', function () {
     return view('outlets');
 })->name('outlets');
 
-Route::get('/product', function () {
-    return ('Coming Soon');
-})->name('product');
+Route::get('/products', function () {
+    return view('products');
+})->name('products');
 
 Route::get('/booking', function () {
     return ('Coming Soon');

@@ -13,8 +13,8 @@ class FeedbackForm extends Component
 
     public function mount()
     {
-        $this->name = auth()->user()->name;
-        $this->phone = auth()->user()->phone;
+        $this->name = auth()->user()->name ?? 'Guest';
+        $this->phone = auth()->user()->phone ?? '';
     }
 
     public function submit()

@@ -15,7 +15,7 @@
         @if ($type === 'textarea')
             <textarea {{ $attributes }} id="{{ $name }}" placeholder="{{ $placeholder ?? '' }}" rows="{{ $rows }}"
                 wire:model.defer="{{ $name }}"
-                class="w-full p-2 rounded-md {{ $errors->has($name) ? 'ring-2 ring-red-500' : 'ring-1 ring-on-surface' }} focus:outline-none focus:ring-2 transition-all text-on-surface resize-none @if($readonly) bg-surface/50 @else bg-white @endif"
+                class="{{ $class }} w-full p-2 rounded-md {{ $errors->has($name) ? 'ring-2 ring-red-500' : 'ring-1 ring-on-surface' }} focus:outline-none focus:ring-2 transition-all text-on-surface resize-none @if($readonly) bg-surface/50 @else bg-white @endif"
                 @if ($autofocus) autofocus @endif @if ($readonly) readonly @endif @if ($disabled) disabled
                 @endif></textarea>
 
@@ -24,7 +24,7 @@
             <div x-data="{ showPassword: false }" class="relative w-full">
                 <input :type="showPassword ? 'text' : 'password'" wire:model.defer="{{ $name }}" id="{{ $name }}"
                     name="{{ $name }}" placeholder="{{ $placeholder ?? '' }}"
-                    class="w-full p-2 @if (!empty($prefix)) rounded-r-md border-l-0 @else rounded-md @endif {{ $errors->has($name) ? 'ring-2 ring-red-500' : 'ring-on-surface' }} ring-1 focus:outline-none focus:ring-2 transition-all text-on-surface @if($readonly) bg-surface/50 @else bg-white @endif"
+                    class="{{ $class }} w-full p-2 @if (!empty($prefix)) rounded-r-md border-l-0 @else rounded-md @endif {{ $errors->has($name) ? 'ring-2 ring-red-500' : 'ring-on-surface' }} ring-1 focus:outline-none focus:ring-2 transition-all text-on-surface @if($readonly) bg-surface/50 @else bg-white @endif"
                     @if ($autofocus) autofocus @endif @if ($readonly) readonly @endif @if ($disabled) disabled @endif>
 
                 <button type="button" @click="showPassword = !showPassword"
@@ -37,7 +37,7 @@
         @else
             <input type="{{ $type }}" wire:model.defer="{{ $name }}" id="{{ $name }}" name="{{ $name }}"
                 placeholder="{{ $placeholder ?? '' }}"
-                class="w-full p-2 @if (!empty($prefix)) rounded-r-md border-l-0 @else rounded-md @endif {{ $errors->has($name) ? 'ring-2 ring-red-500' : 'ring-on-surface' }} ring-1 focus:outline-none focus:ring-2 transition-all text-on-surface @if($readonly) bg-surface/50 @else bg-white @endif"
+                class="{{ $class }} w-full p-2 @if (!empty($prefix)) rounded-r-md border-l-0 @else rounded-md @endif {{ $errors->has($name) ? 'ring-2 ring-red-500' : 'ring-on-surface' }} ring-1 focus:outline-none focus:ring-2 transition-all text-on-surface @if($readonly) bg-surface/50 @else bg-white @endif"
                 @if ($autofocus) autofocus @endif @if ($readonly) readonly @endif @if ($disabled) disabled @endif>
         @endif
     </div>

@@ -13,6 +13,7 @@ class Input extends Component
     public ?string $type;
     public ?string $placeholder;
     public ?string $value;
+    public ?string $class;
     public ?string $rows;
     public ?string $prefix;
     public bool $autofocus;
@@ -22,13 +23,14 @@ class Input extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($name, $label = null, $type = 'text', $placeholder = null, $value = null, $rows = '3', $prefix = null, $autofocus = false, $readonly = false, $disabled = false)
+    public function __construct($name, $label = null, $type = 'text', $placeholder = null, $value = null, $class = null, $rows = '3', $prefix = null, $autofocus = false, $readonly = false, $disabled = false)
     {
         $this->name = $name;
         $this->label = $label;
         $this->type = $type;
         $this->placeholder = $placeholder;
         $this->value = $value;
+        $this->class = $class;
         $this->rows = $rows;
         $this->prefix = $prefix;
         $this->autofocus = $autofocus;
