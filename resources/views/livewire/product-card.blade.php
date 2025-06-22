@@ -12,17 +12,19 @@
     </div>
 
     {{-- Cart Buttons --}}
-    <div class="flex gap-2 text-xs items-center">
-        <x-buttons.button wire:click="decrement" wire:loading.attr="disabled">
-            <i class="fa-solid fa-minus" wire:loading.remove wire:target="decrement"></i>
-            <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="decrement"></i>
-        </x-buttons.button>
-        <span class="size-full flex items-center justify-center border rounded p-1">
-            {{ $quantity }}
-        </span>
-        <x-buttons.button wire:click="increment" wire:loading.attr="disabled">
-            <i class="fa-solid fa-plus" wire:loading.remove wire:target="increment"></i>
-            <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="increment"></i>
-        </x-buttons.button>
-    </div>
+    @auth
+        <div class="flex gap-2 text-xs items-center">
+            <x-buttons.button wire:click="decrement" wire:loading.attr="disabled">
+                <i class="fa-solid fa-minus" wire:loading.remove wire:target="decrement"></i>
+                <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="decrement"></i>
+            </x-buttons.button>
+            <span class="size-full flex items-center justify-center border rounded p-1">
+                {{ $quantity }}
+            </span>
+            <x-buttons.button wire:click="increment" wire:loading.attr="disabled">
+                <i class="fa-solid fa-plus" wire:loading.remove wire:target="increment"></i>
+                <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="increment"></i>
+            </x-buttons.button>
+        </div>
+    @endauth
 </div>
