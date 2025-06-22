@@ -6,19 +6,16 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CustomerFeedback extends Component
+class UserAvatar extends Component
 {
-    public ?string $username;
-    public ?string $createdAt;
+    public ?string $size;
     public ?string $avatar;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($username = 'Unknown', $createdAt = 'unknown', $avatar = null)
+    public function __construct($size = 8, $avatar = null)
     {
-        $this->username = $username;
-        $this->createdAt = $createdAt;
+        $this->size = $size;
         $this->avatar = $avatar;
     }
 
@@ -27,6 +24,6 @@ class CustomerFeedback extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.ui.customer-feedback');
+        return view('components.ui.user-avatar');
     }
 }

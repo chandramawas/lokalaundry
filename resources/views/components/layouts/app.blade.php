@@ -40,7 +40,7 @@
                 </div>
 
                 {{-- Right --}}
-                <div class="justify-self-end flex gap-2">
+                <div class="justify-self-end flex gap-4">
                     @auth
                         <x-buttons.icon-button href="#history" class="h-8 w-8" variant="outline">
                             <i class="fa-solid fa-clock-rotate-left"></i>
@@ -48,14 +48,13 @@
 
                         <div class="relative" x-data="{ open: false }" @click.away="open = false">
                             <button @click="open = !open"
-                                class="h-8 w-8 shrink-0 rounded-full overflow-hidden cursor-pointer">
-                                <img src="https://i.pravatar.cc/150?u={{ Auth::user()->name }}" alt="Avatar"
-                                    class="w-full h-full object-cover">
+                                class="h-8 w-8 shrink-0 rounded-full overflow-hidden cursor-pointer @if (url()->current() == route('profile')) ring-3 ring-primary @endif ">
+                                <x-ui.user-avatar :avatar="Auth::user()->avatar" size="8" />
                             </button>
 
                             <div x-show="open" x-transition
                                 class="absolute right-0 mt-2 w-50 bg-white border border-gray-200 text-on-surface rounded-lg shadow-lg z-50 text-sm overflow-hidden">
-                                <a href="#profile" class="block px-6 py-3 hover:bg-gray-100 transition">
+                                <a href="{{ route('profile') }}" class="block px-6 py-3 hover:bg-gray-100 transition">
                                     <i class="fa-solid fa-user"></i> <span class="ml-1">Profile</span>
                                 </a>
                                 <form action="{{ route('logout') }}" method="POST">

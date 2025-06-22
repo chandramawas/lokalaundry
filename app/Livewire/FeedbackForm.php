@@ -8,7 +8,14 @@ use Livewire\Component;
 
 class FeedbackForm extends Component
 {
-    public $message;
+    public string $message;
+    public string $name;
+
+    public function mount()
+    {
+        $this->name = auth()->user()->name;
+        $this->phone = auth()->user()->phone;
+    }
 
     public function submit()
     {

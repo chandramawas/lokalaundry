@@ -20,6 +20,10 @@ Route::get('/booking', function () {
     return ('Coming Soon');
 })->name('booking');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth')->name('profile');
+
 // Auth Routes
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
