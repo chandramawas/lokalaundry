@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Auth;
+use Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -14,10 +15,21 @@ class ProfileSettings extends Component
     public string $phone;
     public $avatar;
 
+    public string $currentPassword = '';
+    public string $newPassword = '';
+    public string $confirmPassword = '';
+
+    public string $formMode = 'profile';
+
     public function mount()
     {
         $this->name = auth()->user()->name;
         $this->phone = auth()->user()->phone;
+    }
+
+    public function toggleForm(string $mode)
+    {
+        $this->formMode = $mode;
     }
 
     public function updateProfile()
@@ -50,6 +62,29 @@ class ProfileSettings extends Component
         } else {
             session()->flash('info', 'No changes were made.');
         }
+    }
+
+    public function changePassword()
+    {
+        $this->validate([
+            'currentPassword' => 'required|string',
+            'newPassword' => 'required|string|min:8',
+            'confirmPassword' => 'required|string|same:newPassword',
+        ]);
+
+        $user = auth()->user();
+
+        if (!Hash::check($this->currentPassword, $user->password)) {
+            $this->addError('currentPassword', 'Current password is incorrect.');
+            return;
+        }
+
+        $user->password = Hash::make($this->newPassword);
+        $user->save();
+
+        $this->reset(['currentPassword', 'newPassword', 'confirmPassword']);
+
+        session()->flash('success', 'Password updated successfully.');
     }
 
     public function render()

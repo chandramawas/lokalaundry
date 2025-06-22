@@ -6,7 +6,7 @@
     <div class="relative flex items-stretch w-full">
         @if (!empty($prefix))
             <span
-                class="inline-flex items-center px-3 text-sm text-on-surface-variant bg-surface ring-1 ring-on-surface rounded-l-md">
+                class="inline-flex items-center px-3 font-medium text-on-surface bg-surface ring-1 ring-on-surface rounded-l-md">
                 {{ $prefix }}
             </span>
         @endif
