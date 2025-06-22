@@ -8,16 +8,16 @@ use Illuminate\View\Component;
 
 class CustomerFeedback extends Component
 {
-    public ?string $username;
+    public ?string $name;
     public ?string $createdAt;
     public ?string $avatar;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($username = 'Unknown', $createdAt = 'unknown', $avatar = null)
+    public function __construct($name = 'Unknown', $createdAt = 'unknown', $avatar = null)
     {
-        $this->username = $username;
+        $this->name = $name;
         $this->createdAt = $createdAt;
         $this->avatar = $avatar;
     }

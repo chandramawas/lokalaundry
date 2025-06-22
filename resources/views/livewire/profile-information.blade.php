@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-4 items-center justify-center size-full">
     {{-- Avatar --}}
-    <x-ui.user-avatar :avatar="Auth::user()->avatar" size="32" />
+    <x-ui.user-avatar :avatar="Auth::user()->avatar" :name="Auth::user()->name" size="32" />
 
     {{-- Information --}}
     <div class="flex flex-col items-center gap-1">

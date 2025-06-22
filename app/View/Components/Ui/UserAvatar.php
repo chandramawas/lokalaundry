@@ -10,13 +10,16 @@ class UserAvatar extends Component
 {
     public ?string $size;
     public ?string $avatar;
+    public string $name;
+
     /**
      * Create a new component instance.
      */
-    public function __construct($size = 8, $avatar = null)
+    public function __construct($size = 8, $avatar = null, $name)
     {
         $this->size = $size;
         $this->avatar = $avatar;
+        $this->name = $name;
     }
 
     /**
