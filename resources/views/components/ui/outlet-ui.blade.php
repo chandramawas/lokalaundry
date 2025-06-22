@@ -12,5 +12,5 @@
     </div>
 
     <!-- Action Button -->
-    <x-buttons.button>Booking Now</x-buttons.button>
+    <x-buttons.button>Booking Disini</x-buttons.button>
 </div>

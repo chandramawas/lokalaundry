@@ -18,7 +18,7 @@
             <x-ui.outlet-ui name="{{ $outlet->name }}" address="{{ $outlet->address }}" phone="{{ $outlet->phone }}" />
         @empty
             <div class="text-center text-sm text-on-surface-variant">
-                No outlets available for the selected city.
+                Tidak ada outlet yang tersedia di kota ini.
             </div>
         @endforelse
     </div>

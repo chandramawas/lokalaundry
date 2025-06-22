@@ -13,7 +13,7 @@ class FeedbackForm extends Component
 
     public function mount()
     {
-        $this->name = auth()->user()->name ?? 'Guest';
+        $this->name = auth()->user()->name ?? 'Tamu';
         $this->phone = auth()->user()->phone ?? '';
     }
 
@@ -29,7 +29,7 @@ class FeedbackForm extends Component
         ]);
 
         $this->reset('message');
-        session()->flash('success', 'Feedback submitted successfully!');
+        session()->flash('success', 'Umpan Balik berhasil dikirim!');
         $this->dispatch('feedback-submitted');
     }
 

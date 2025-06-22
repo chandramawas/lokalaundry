@@ -6,7 +6,7 @@
         </x-ui.customer-feedback>
     @empty
         <div class="text-center text-sm text-on-surface-variant">
-            No feedback available yet.
+            Tidak ada umpan balik yang tersedia.
         </div>
     @endforelse
 </div>

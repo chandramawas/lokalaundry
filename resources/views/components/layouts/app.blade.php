@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -33,10 +33,10 @@
 
                 {{-- Mid --}}
                 <div class="justify-self-center flex gap-8">
-                    <x-buttons.nav-button href="{{ route('home') }}">Home</x-buttons.nav-button>
-                    <x-buttons.nav-button href="{{ route('outlets') }}">Outlets</x-buttons.nav-button>
+                    <x-buttons.nav-button href="{{ route('home') }}">Beranda</x-buttons.nav-button>
+                    <x-buttons.nav-button href="{{ route('outlets') }}">Daftar Outlet</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('booking') }}">Booking</x-buttons.nav-button>
-                    <x-buttons.nav-button href="{{ route('products') }}">Products</x-buttons.nav-button>
+                    <x-buttons.nav-button href="{{ route('products') }}">Produk</x-buttons.nav-button>
                 </div>
 
                 {{-- Right --}}
@@ -55,21 +55,21 @@
                             <div x-show="open" x-transition
                                 class="absolute right-0 mt-2 w-50 bg-white border border-gray-200 text-on-surface rounded-lg shadow-lg z-50 text-sm overflow-hidden">
                                 <a href="{{ route('profile') }}" class="block px-6 py-3 hover:bg-gray-100 transition">
-                                    <i class="fa-solid fa-user"></i> <span class="ml-1">Profile</span>
+                                    <i class="fa-solid fa-user"></i> <span class="ml-1">Profil</span>
                                 </a>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit"
                                         class="w-full text-left px-6 py-3 hover:bg-gray-100 transition cursor-pointer">
-                                        <i class="fa-solid fa-right-from-bracket"></i> <span class="ml-1">Logout</span>
+                                        <i class="fa-solid fa-right-from-bracket"></i> <span class="ml-1">Keluar</span>
                                     </button>
                                 </form>
                             </div>
                         </div>
                     @endauth
                     @guest
-                        <x-buttons.button href="{{ route('login') }}" variant="outline">Login</x-buttons.button>
-                        <x-buttons.button href="{{ route('register') }}" variant="primary">Register</x-buttons.button>
+                        <x-buttons.button href="{{ route('login') }}" variant="outline">Masuk</x-buttons.button>
+                        <x-buttons.button href="{{ route('register') }}" variant="primary">Daftar</x-buttons.button>
                     @endguest
                 </div>
             </div>
@@ -101,9 +101,9 @@
 
             {{-- Buttons --}}
             <div class="flex gap-4 justify-center">
-                <x-buttons.text-button>About Us</x-buttons.text-button>
+                <x-buttons.text-button>Tentang Kami</x-buttons.text-button>
                 <span>|</span>
-                <x-buttons.text-button>Contact Us</x-buttons.text-button>
+                <x-buttons.text-button>Kontak</x-buttons.text-button>
             </div>
 
             {{-- Copyright --}}

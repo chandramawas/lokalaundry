@@ -1,6 +1,6 @@
-<x-layouts.app title="Products">
+<x-layouts.app title="Produk">
     <br>
-    <x-ui.section-container id="products" title="Products">
+    <x-ui.section-container id="products" title="Produk">
         <div class="grid grid-cols-4 gap-4">
             {{-- Product 1 --}}
             <div class="border border-primary rounded-lg p-4 size-full flex flex-col gap-6 justify-between">
@@ -32,12 +32,12 @@
     <x-ui.section-container id="cart">
         <div class="flex flex-col gap-4">
             <div class="flex font-semibold justify-between items-center text-lg">
-                <span>Subtotal <span class="font-normal">(2 Items)</span></span>
+                <span>Subtotal <span class="font-normal">(2 Barang)</span></span>
                 <span class="text-primary">Rp3.000</span>
             </div>
             <div class="flex gap-2 justify-end">
-                <x-buttons.button variant="outline">Clear Cart</x-buttons.button>
-                <x-buttons.button variant="primary">Checkout</x-buttons.button>
+                <x-buttons.button variant="outline">Hapus Semua</x-buttons.button>
+                <x-buttons.button variant="primary">Bayar Sekarang</x-buttons.button>
             </div>
         </div>
     </x-ui.section-container>

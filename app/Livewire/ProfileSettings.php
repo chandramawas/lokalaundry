@@ -57,10 +57,10 @@ class ProfileSettings extends Component
 
         if ($updated) {
             $user->save();
-            session()->flash('success', 'Profile updated successfully.');
+            session()->flash('success', 'Profil berhasil diperbarui.');
             $this->dispatch('profileUpdated');
         } else {
-            session()->flash('info', 'No changes were made.');
+            session()->flash('info', 'Tidak ada perubahan.');
         }
     }
 
@@ -75,7 +75,7 @@ class ProfileSettings extends Component
         $user = auth()->user();
 
         if (!Hash::check($this->currentPassword, $user->password)) {
-            $this->addError('currentPassword', 'Current password is incorrect.');
+            $this->addError('currentPassword', 'Kata Sandi salah..');
             return;
         }
 
@@ -84,7 +84,7 @@ class ProfileSettings extends Component
 
         $this->reset(['currentPassword', 'newPassword', 'confirmPassword']);
 
-        session()->flash('success', 'Password updated successfully.');
+        session()->flash('success', 'Kata Sandi berhasil diperbarui.');
     }
 
     public function render()
