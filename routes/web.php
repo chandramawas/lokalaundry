@@ -8,9 +8,9 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/outlet', function () {
-    return view('outlet');
-})->name('outlet');
+Route::get('/outlets', function () {
+    return view('outlets');
+})->name('outlets');
 
 Route::get('/product', function () {
     return ('Coming Soon');

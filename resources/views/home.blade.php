@@ -26,8 +26,8 @@
     <x-ui.section-container id="services" title="Our Services">
         <div class="grid grid-cols-4 gap-2">
             <x-ui.service-ui icon="fa-solid fa-calendar-days" descDisplay="365" descBody="Days Open" />
-            <x-ui.service-ui icon="fa-solid fa-store" descDisplay="50" descBody="Outlet" />
-            <x-ui.service-ui icon="fa-solid fa-building-wheat" descDisplay="6" descBody="Major City" />
+            <x-ui.service-ui icon="fa-solid fa-store" descDisplay="50" descBody="Outlets" />
+            <x-ui.service-ui icon="fa-solid fa-building-wheat" descDisplay="6" descBody="Major Cities" />
             <x-ui.service-ui icon="fa-solid fa-clock" descDisplay="24" descBody="Hours Open" />
         </div>
     </x-ui.section-container>

@@ -34,7 +34,7 @@
                 {{-- Mid --}}
                 <div class="justify-self-center flex gap-8">
                     <x-buttons.nav-button href="{{ route('home') }}">Home</x-buttons.nav-button>
-                    <x-buttons.nav-button href="{{ route('outlet') }}">Outlets</x-buttons.nav-button>
+                    <x-buttons.nav-button href="{{ route('outlets') }}">Outlets</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('booking') }}">Booking</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('product') }}">Products</x-buttons.nav-button>
                 </div>
