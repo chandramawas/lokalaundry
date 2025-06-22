@@ -9,7 +9,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/outlet', function () {
-    return ('Coming Soon');
+    return view('outlet');
 })->name('outlet');
 
 Route::get('/product', function () {

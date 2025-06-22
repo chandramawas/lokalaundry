@@ -5,11 +5,11 @@
     </div>
 
     {{-- Username & Feedback --}}
-    <div>
+    <div class="overflow-hidden">
         <p class="font-bold">
             {{ $username }}
             <span class="text-on-surface-variant font-normal text-xs">{{ $createdAt }}</span>
         </p>
-        <p class="text-sm text-pretty">{{ $slot }}</p>
+        <p class="text-sm text-pretty break-all">{{ $slot }}</p>
     </div>
 </div>

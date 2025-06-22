@@ -13,8 +13,7 @@ class FeedbackList extends Component
 
     public function render()
     {
-        return view('livewire.feedback-list', [
-            'feedbacks' => Feedback::with('user')->latest()->take(20)->get(),
-        ]);
+        $feedbacks = Feedback::with('user')->latest()->take(20)->get();
+        return view('livewire.feedback-list', compact('feedbacks'));
     }
 }
