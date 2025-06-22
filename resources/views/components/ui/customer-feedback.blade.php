@@ -1,6 +1,8 @@
 <div class="flex gap-2 text-on-surface">
     {{-- Avatar --}}
-    <x-ui.user-avatar avatar="{{ $avatar }}" :name="$name" size="12" />
+    <div class="size-12 shrink-0 rounded-full overflow-hidden border border-primary">
+        <x-ui.user-avatar avatar="{{ $avatar }}" :name="$name" />
+    </div>
 
     {{-- Username & Feedback --}}
     <div class="overflow-hidden flex-1">

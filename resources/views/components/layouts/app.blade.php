@@ -48,8 +48,8 @@
 
                         <div class="relative" x-data="{ open: false }" @click.away="open = false">
                             <button @click="open = !open"
-                                class="h-8 w-8 shrink-0 rounded-full overflow-hidden cursor-pointer @if (url()->current() == route('profile')) ring-3 ring-primary @endif ">
-                                <x-ui.user-avatar :avatar="Auth::user()->avatar" :name="Auth::user()->name" size="8" />
+                                class="h-8 w-8 shrink-0 rounded-full overflow-hidden border border-primary cursor-pointer transition @if (url()->current() == route('profile')) ring-3 ring-primary @endif ">
+                                <x-ui.user-avatar :avatar="Auth::user()->avatar" :name="Auth::user()->name" />
                             </button>
 
                             <div x-show="open" x-transition
