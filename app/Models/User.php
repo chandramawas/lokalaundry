@@ -45,8 +45,22 @@ class User extends Authenticatable
         ];
     }
 
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->wallet()->create([
+                'balance' => 0,
+            ]);
+        });
+    }
+
     public function feedback()
     {
         return $this->hasMany(Feedback::class);
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
     }
 }

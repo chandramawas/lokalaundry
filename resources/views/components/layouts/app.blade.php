@@ -40,30 +40,39 @@
                 </div>
 
                 {{-- Right --}}
-                <div class="justify-self-end flex gap-4">
+                <div class="justify-self-end flex gap-2 items-center">
                     @auth
-                        <x-buttons.icon-button href="#history" class="h-8 w-8" variant="outline">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                        </x-buttons.icon-button>
+                        <x-buttons.button href="#wallet-history" variant="outline">
+                            <i class="fa-solid fa-wallet"></i>
+                            <span class="text-primary font-medium ml-1">
+                                Rp{{ number_format(auth()->user()->wallet->balance ?? 0, 0, ',', '.') }}
+                            </span>
+                        </x-buttons.button>
 
                         <div class="relative" x-data="{ open: false }" @click.away="open = false">
                             <button @click="open = !open"
-                                class="h-8 w-8 shrink-0 rounded-full overflow-hidden border border-primary cursor-pointer transition @if (url()->current() == route('profile')) ring-3 ring-primary @endif ">
+                                class="h-9 w-9 shrink-0 flex items-center rounded-full overflow-hidden border border-primary cursor-pointer transition @if (url()->current() == route('profile')) ring-3 ring-primary @endif ">
                                 <x-ui.user-avatar :avatar="Auth::user()->avatar" :name="Auth::user()->name" />
                             </button>
 
+                            {{-- Dropdown --}}
                             <div x-show="open" x-transition
                                 class="absolute right-0 mt-2 w-50 bg-white border border-gray-200 text-on-surface rounded-lg shadow-lg z-50 text-sm overflow-hidden">
+
                                 <a href="{{ route('profile') }}" class="block px-6 py-3 hover:bg-gray-100 transition">
-                                    <i class="fa-solid fa-user"></i> <span class="ml-1">Profil</span>
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="ml-1">Profil</span>
                                 </a>
+
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit"
                                         class="w-full text-left px-6 py-3 hover:bg-gray-100 transition cursor-pointer">
-                                        <i class="fa-solid fa-right-from-bracket"></i> <span class="ml-1">Keluar</span>
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        <span class="ml-1">Keluar</span>
                                     </button>
                                 </form>
+
                             </div>
                         </div>
                     @endauth
