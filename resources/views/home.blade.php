@@ -60,7 +60,7 @@
                             <x-buttons.text-button href="{{ route('login') }}" class="text-primary font-bold">
                                 Masuk
                             </x-buttons.text-button>
-                            untuk memberikan pendapat!
+                            untuk memberikan umpan balik!
                         </p>
                     </div>
                 @endguest

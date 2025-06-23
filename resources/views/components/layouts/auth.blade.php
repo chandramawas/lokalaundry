@@ -37,7 +37,7 @@
         </div>
 
         {{-- Right --}}
-        <div class="size-full px-12 py-10 flex flex-col gap-4">
+        <div class="size-full px-12 py-10 flex flex-col gap-8">
             {{ $slot }}
         </div>
     </div>
