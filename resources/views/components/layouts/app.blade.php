@@ -42,7 +42,7 @@
                 {{-- Right --}}
                 <div class="justify-self-end flex gap-2 items-center">
                     @auth
-                        <x-buttons.button href="#wallet-history" variant="outline">
+                        <x-buttons.button href="#wallet" variant="outline">
                             <i class="fa-solid fa-wallet"></i>
                             <span class="text-primary font-medium ml-1">
                                 Rp{{ number_format(auth()->user()->wallet->balance ?? 0, 0, ',', '.') }}
@@ -62,6 +62,11 @@
                                 <a href="{{ route('profile') }}" class="block px-6 py-3 hover:bg-gray-100 transition">
                                     <i class="fa-solid fa-user"></i>
                                     <span class="ml-1">Profil</span>
+                                </a>
+
+                                <a href="#history" class="block px-6 py-3 hover:bg-gray-100 transition">
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                    <span class="ml-1">Riwayat Pesanan</span>
                                 </a>
 
                                 <form action="{{ route('logout') }}" method="POST">
