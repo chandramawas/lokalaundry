@@ -10,14 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('outlets', function (Blueprint $table) {
+        Schema::create('booking_machines', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('address');
-            $table->string('city');
-            $table->string('phone');
-            $table->integer('session_duration')->default(55); //Menit
-            $table->integer('session_gap')->default(5); //Menit
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            $table->foreignId('machine_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('outlets');
+        Schema::dropIfExists('booking_machines');
     }
 };

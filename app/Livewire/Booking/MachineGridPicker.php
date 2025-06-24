@@ -2,21 +2,24 @@
 
 namespace App\Livewire\Booking;
 
+use App\Models\Machine;
 use Livewire\Component;
 
 class MachineGridPicker extends Component
 {
+    public $outletId;
+
     public $selectedSession;
 
     public $machines = [];
     public $selectedMachines = [];
 
-    public $loadingMachine = null;
-
     protected $listeners = ['sessionSelected' => 'loadMachines'];
 
-    public function mount($selectedSession = null)
+    public function mount($outletId, $selectedSession = null)
     {
+        $this->outletId = $outletId;
+
         if ($selectedSession) {
             $this->loadMachines($selectedSession);
         }
@@ -27,17 +30,20 @@ class MachineGridPicker extends Component
     {
         $this->selectedSession = $session;
 
-        // Simulasi Data Mesin
-        // TODO: buat databasenya
-        $this->machines = [
-            ['number' => 'W-01', 'type' => 'w', 'capacity' => 10, 'status' => 'booked'],
-            ['number' => 'W-02', 'type' => 'w', 'capacity' => 10, 'status' => 'available'],
-            ['number' => 'W-03', 'type' => 'w', 'capacity' => 16, 'status' => 'available'],
-            ['number' => 'W-04', 'type' => 'w', 'capacity' => 33, 'status' => 'available'],
-            ['number' => 'W-05', 'type' => 'w', 'capacity' => 33, 'status' => 'maintenance'],
-            ['number' => 'D-01', 'type' => 'd', 'capacity' => null, 'status' => 'available'],
-            ['number' => 'D-02', 'type' => 'd', 'capacity' => null, 'status' => 'available'],
-        ];
+        $this->machines = Machine::where('outlet_id', $this->outletId)
+            ->with('machineType')
+            ->where('status', 'available')
+            ->get()
+            ->map(function ($machine) {
+                return [
+                    'id' => $machine->id,
+                    'number' => $machine->number,
+                    'type' => $machine->machineType->type,
+                    'capacity' => $machine->machineType->capacity,
+                    'price' => $machine->machineType->price,
+                    'status' => $machine->status,
+                ];
+            })->toArray();
 
         $this->selectedMachines = [];
         $this->dispatch('machinesSelected', machines: $this->selectedMachines);
@@ -51,12 +57,12 @@ class MachineGridPicker extends Component
             return;
         }
 
-        $key = array_search($number, $this->selectedMachines);
+        $key = array_search($machine['id'], $this->selectedMachines);
 
         if ($key !== false) {
             unset($this->selectedMachines[$key]);
         } else {
-            $this->selectedMachines[] = $number;
+            $this->selectedMachines[] = $machine['id']; // Store the ID instead of number
         }
 
         $this->dispatch('machinesSelected', machines: $this->selectedMachines);

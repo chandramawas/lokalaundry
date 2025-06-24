@@ -2,21 +2,32 @@
 
 namespace App\Livewire\Booking;
 
+use App\Models\Outlet;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class TimeSessionPicker extends Component
 {
+    public $outletId;
+    public $sessionDuration;
+    public $sessionGap;
+
     public $selectedDate;
     public $sessions = [];
     public $selectedSession;
 
     protected $listeners = ['dateSelected' => 'updateSessions'];
 
-    public function mount()
+    public function mount($outletId)
     {
         if (!$this->selectedDate) {
             $this->selectedDate = now()->toDateString();
         }
+
+        $this->outletId = $outletId;
+        $outlet = Outlet::findOrFail($outletId);
+        $this->sessionDuration = $outlet->session_duration;
+        $this->sessionGap = $outlet->session_gap;
 
         $this->updateSessions($this->selectedDate);
     }
@@ -26,29 +37,40 @@ class TimeSessionPicker extends Component
         $this->selectedDate = $date;
 
         $now = now();
-        $selectedDateObj = \Carbon\Carbon::parse($date);
+        $selectedDateObj = Carbon::parse($date);
 
         $this->sessions = [];
-        for ($i = 0; $i <= 23; $i++) {
-            $start = str_pad($i, 2, '0', STR_PAD_LEFT) . ':00';
-            $end = str_pad($i, 2, '0', STR_PAD_LEFT) . ':55';
 
+        $startTime = Carbon::parse($date . ' 00:00:00');
+        $endOfDay = Carbon::parse($date . ' 23:59:59'); // Batas hari itu
+
+        $sessionDuration = $this->sessionDuration;
+        $sessionGap = $this->sessionGap;
+
+        while ($startTime->lessThanOrEqualTo($endOfDay)) {
+            $endTime = $startTime->copy()->addMinutes($sessionDuration);
+
+            // Kalau endTime udah lewat batas hari, stop
+            if ($endTime->greaterThan($endOfDay)) {
+                break;
+            }
+
+            // Cek apakah sesi sudah lewat
             $isDisabled = false;
-            if ($selectedDateObj->isToday()) {
-                if ($i <= $now->hour) {
-                    $isDisabled = true;
-                }
+            if ($selectedDateObj->isToday() && $startTime->lessThanOrEqualTo($now)) {
+                $isDisabled = true;
             }
 
             $this->sessions[] = [
-                'label' => "$start - $end",
-                'start' => $start,
-                'end' => $end,
+                'label' => $startTime->format('H:i') . ' - ' . $endTime->format('H:i'),
+                'start' => $startTime->format('H:i'),
+                'end' => $endTime->format('H:i'),
                 'isDisabled' => $isDisabled,
             ];
+
+            $startTime = $endTime->copy()->addMinutes($sessionGap);
         }
 
-        // Default pilih jam pertama yang belum disable
         $this->selectedSession = null;
         $this->dispatch('sessionSelected', session: $this->selectedSession);
     }

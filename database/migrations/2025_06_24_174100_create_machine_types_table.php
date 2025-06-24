@@ -10,14 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('outlets', function (Blueprint $table) {
+        Schema::create('machine_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('address');
-            $table->string('city');
-            $table->string('phone');
-            $table->integer('session_duration')->default(55); //Menit
-            $table->integer('session_gap')->default(5); //Menit
+            $table->string('name');
+            $table->enum('type', ['w', 'd']);
+            $table->integer('capacity')->nullable();
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('outlets');
+        Schema::dropIfExists('machine_types');
     }
 };

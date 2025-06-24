@@ -7,11 +7,15 @@ use Livewire\Component;
 
 class DatePicker extends Component
 {
+    public $outletId;
+
     public $dates = [];
     public $selectedDate;
 
-    public function mount()
+    public function mount($outletId)
     {
+        $this->outletId = $outletId;
+
         $this->generateDates();
         $this->selectedDate = $this->dates[0]; // Default ke hari ini
         $this->dispatch('dateSelected', date: $this->selectedDate);
