@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6">
     {{-- Choosen Outlet --}}
-    <x-ui.outlet-ui :name="$selectedOutlet" :address="$selectedAddress" :phone="$selectedPhone" />
+    <x-ui.outlet-ui :name="$outlet->name" :address="$outlet->address" :phone="$outlet->phone" />
 
     <div class="grid grid-cols-2 gap-4">
         {{-- Choosen Session --}}
@@ -28,22 +28,14 @@
             @forelse ($selectedMachines as $machine)
                 <div class="flex justify-between items-center border-b pb-2">
                     <span class="font-medium">
-                        @if (str_starts_with($machine, 'W'))
-                            Mesin Cuci Maks. 10kg ({{ $machine }})
-                        @else
-                            Pengering ({{ $machine }})
-                        @endif
+                        {{ $machine->machineType->name }} ({{ $machine->number }})
                     </span>
                     <span class="text-sm font-semibold text-primary">
-                        @if (str_starts_with($machine, 'W'))
-                            Rp8.000
-                        @else
-                            Rp20.000
-                        @endif
+                        Rp{{ number_format($machine->machineType->price, 0, ',', '.') }}
                     </span>
                 </div>
             @empty
-                <span class="italic text-sm">Belum ada mesin yang dipilih</span>
+                <span class="italic text-sm text-on-surface-variant">Belum ada mesin yang dipilih</span>
             @endforelse
 
             {{-- Subtotal --}}

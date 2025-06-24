@@ -8,7 +8,7 @@
             <x-ui.color-legend color="machine-maintenance" label="Dalam Perbaikan" />
         </div>
 
-        <livewire:booking.machine-grid-picker />
+        <livewire:booking.machine-grid-picker outletId="{{ $outletId }}" />
 
         @if ($overlay)
             <div
@@ -24,9 +24,10 @@
     <div class="col-span-2 border border-primary p-4 rounded-lg flex flex-col gap-2">
         <h3 class="font-bold text-lg">Price List</h3>
         <hr>
-        <x-ui.machine-price title="Maks. 10kg" price="8000" width="w-1/3" />
-        <x-ui.machine-price title="Maks. 16kg" price="14000" width="w-2/3" />
-        <x-ui.machine-price title="Maks. 33kg" price="20000" />
-        <x-ui.machine-price title="Pengering" price="20000" />
+        @forelse ($prices as $price)
+            <x-ui.machine-price :title="$price['title']" :price="$price['price']" :width="$price['width']" />
+        @empty
+            <span class="italic text-sm text-on-surface-variant">Belum ada mesin tersedia di outlet ini.</span>
+        @endforelse
     </div>
 </div>

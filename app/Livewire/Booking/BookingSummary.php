@@ -2,11 +2,16 @@
 
 namespace App\Livewire\Booking;
 
+use App\Models\Machine;
+use App\Models\Outlet;
 use Carbon\Carbon;
 use Livewire\Component;
 
 class BookingSummary extends Component
 {
+    public $outletId;
+    public $outlet;
+
     public $selectedOutlet = 'Outlet Jakarta 1';
     public $selectedAddress = 'Jl. Jakarta';
     public $selectedPhone = '85776074800';
@@ -23,8 +28,9 @@ class BookingSummary extends Component
         'machinesSelected' => 'updateMachines',
     ];
 
-    public function mount()
+    public function mount($outletId)
     {
+        $this->outlet = Outlet::findOrFail($outletId);
         $this->updateDate($this->selectedDate);
     }
 
@@ -40,7 +46,7 @@ class BookingSummary extends Component
 
     public function updateMachines($machines)
     {
-        $this->selectedMachines = $machines;
+        $this->selectedMachines = Machine::with('machineType')->whereIn('id', $machines)->get();
         $this->calculateSubtotal();
     }
 
@@ -48,13 +54,8 @@ class BookingSummary extends Component
     {
         $total = 0;
 
-        // Simulasi Harga, nanti bisa diambil dari database
         foreach ($this->selectedMachines as $machine) {
-            if (str_starts_with($machine, 'W')) {
-                $total += 8000;
-            } elseif (str_starts_with($machine, 'D')) {
-                $total += 20000;
-            }
+            $total += $machine->machineType->price;
         }
 
         $this->subtotal = $total;

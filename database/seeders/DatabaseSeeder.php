@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             OutletSeeder::class,
             ProductSeeder::class,
+            MachineTypeSeeder::class,
+            MachineSeeder::class,
         ]);
     }
 }

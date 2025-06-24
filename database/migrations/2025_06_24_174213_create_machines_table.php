@@ -10,14 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('outlets', function (Blueprint $table) {
+        Schema::create('machines', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('address');
-            $table->string('city');
-            $table->string('phone');
-            $table->integer('session_duration')->default(55); //Menit
-            $table->integer('session_gap')->default(5); //Menit
+            $table->foreignId('outlet_id')->constrained()->onDelete('cascade');
+            $table->foreignId('machine_type_id')->constrained()->onDelete('cascade');
+            $table->string('number');
+            $table->enum('status', ['available', 'maintenance'])->default('available');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('outlets');
+        Schema::dropIfExists('machines');
     }
 };

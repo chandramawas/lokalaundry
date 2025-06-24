@@ -7,7 +7,7 @@
                 @foreach ($machines as $machine)
                     @if ($machine['type'] === 'w')
                         <x-ui.machine-ui number="{{ $machine['number'] }}"
-                            status="{{ in_array($machine['number'], $selectedMachines) ? 'selected' : $machine['status'] }}"
+                            status="{{ in_array($machine['id'], $this->selectedMachines) ? 'selected' : $machine['status'] }}"
                             type="w" capacity="{{ $machine['capacity'] }}" wire:click="toggleMachine('{{ $machine['number'] }}')" />
                     @endif
                 @endforeach
@@ -21,7 +21,7 @@
                 @foreach ($machines as $machine)
                     @if ($machine['type'] === 'd')
                         <x-ui.machine-ui number="{{ $machine['number'] }}"
-                            status="{{ in_array($machine['number'], $selectedMachines) ? 'selected' : $machine['status'] }}"
+                            status="{{ in_array($machine['id'], $this->selectedMachines) ? 'selected' : $machine['status'] }}"
                             type="d" wire:click="toggleMachine('{{ $machine['number'] }}')" />
                     @endif
                 @endforeach
