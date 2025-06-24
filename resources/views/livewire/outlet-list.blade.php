@@ -19,7 +19,7 @@
                 buttonLabel="Pilih Outlet" buttonVariant="primary" buttonHref="{{ route('booking', $outlet->id) }}" />
         @empty
             <div class="text-center text-sm text-on-surface-variant">
-                Tidak ada outlet yang tersedia di kota ini.
+                Tidak ada outlet yang tersedia.
             </div>
         @endforelse
     </div>
