@@ -1,6 +1,6 @@
 <x-layouts.app title="Produk">
     <br>
-    <x-ui.section-container id="products" title="Produk">
+    <x-ui.section-container id="products">
         <livewire:product-list />
     </x-ui.section-container>
 

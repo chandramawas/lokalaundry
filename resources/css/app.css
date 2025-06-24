@@ -15,6 +15,10 @@
 
     --color-primary: #BC3131;
     --color-on-primary: var(--color-teal-50);
+
+    --color-machine-available: var(--color-green-500);
+    --color-machine-booked: var(--color-blue-500);
+    --color-machine-maintenance: var(--color-red-500);
 }
 
 @layer base {

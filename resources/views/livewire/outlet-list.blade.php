@@ -15,7 +15,8 @@
     <!-- Outlet List -->
     <div class="flex flex-col gap-4">
         @forelse ($outlets as $outlet)
-            <x-ui.outlet-ui name="{{ $outlet->name }}" address="{{ $outlet->address }}" phone="{{ $outlet->phone }}" />
+            <x-ui.outlet-ui name="{{ $outlet->name }}" address="{{ $outlet->address }}" phone="{{ $outlet->phone }}" button
+                buttonLabel="Pilih Outlet" buttonVariant="primary" buttonHref="{{ route('booking', $outlet->id) }}" />
         @empty
             <div class="text-center text-sm text-on-surface-variant">
                 Tidak ada outlet yang tersedia di kota ini.

@@ -12,5 +12,7 @@
     </div>
 
     <!-- Action Button -->
-    <x-buttons.button>Booking Disini</x-buttons.button>
+    @if ($button)
+        <x-buttons.button variant="{{ $buttonVariant }}" href="{{ $buttonHref }}">{{ $buttonLabel }}</x-buttons.button>
+    @endif
 </div>

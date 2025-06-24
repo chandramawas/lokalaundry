@@ -6,15 +6,21 @@
         'primary' => 'bg-primary text-on-primary',
     };
 
-    $finalClass = trim($base . ' ' . $variantClass . ' ' . ($class ?? ''));
+    $isDisabled = $attributes->get('disabled') !== null;
+
+    $disabledClass = $isDisabled
+        ? 'opacity-50 pointer-events-none'
+        : '';
+
+    $finalClass = trim($base . ' ' . $variantClass . ' ' . $disabledClass . ' ' . ($class ?? ''));
 @endphp
 
 @if ($href)
-    <a href="{{ $href }}" class="{{ $finalClass }}">
+    <a href="{{ $href }}" {{ $attributes->merge(['class' => $finalClass]) }} {{ $isDisabled ? 'disabled' : '' }}>
         {{ $slot }}
     </a>
 @else
-    <button type="{{ $type }}" class="{{ $finalClass }}">
+    <button type="{{ $type }}" {{ $attributes->merge(['class' => $finalClass]) }} {{ $isDisabled ? 'disabled' : '' }}>
         {{ $slot }}
     </button>
 @endif

@@ -20,9 +20,16 @@ class NavButton extends Component
     {
         $this->href = $href;
         $this->class = $class;
-        $this->active = $href === url()->current();
-    }
+        $path = trim(parse_url($href, PHP_URL_PATH), '/');
 
+        if ($path === '') {
+            // Khusus untuk Home
+            $this->active = request()->is('/');
+        } else {
+            // Untuk route lain
+            $this->active = request()->is($path . '*');
+        }
+    }
     /**
      * Get the view / contents that represent the component.
      */

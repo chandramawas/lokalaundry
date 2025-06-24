@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,9 +17,7 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/booking', function () {
-    return ('Coming Soon');
-})->name('booking');
+Route::get('/booking/{outlet?}', [BookingController::class, 'index'])->name('booking');
 
 Route::get('/profile', function () {
     return view('profile');
