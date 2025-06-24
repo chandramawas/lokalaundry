@@ -49,7 +49,7 @@
             class="absolute inset-0 bg-white/80 backdrop-blur-xs flex flex-col items-center justify-center z-20 rounded-xl text-center p-4">
             <p class="text-on-surface-variant text-sm">
                 Kamu perlu
-                <x-buttons.text-button href="{{ route('login') }}" class="text-primary font-bold">
+                <x-buttons.text-button href="{{ route('login') }}?r={{ url()->current() }}" class="text-primary font-bold">
                     Masuk
                 </x-buttons.text-button>
                 untuk membeli produk!

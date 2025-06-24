@@ -17,7 +17,8 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/booking/{outlet?}', [BookingController::class, 'index'])->name('booking');
+Route::get('/booking/{outlet?}', [BookingController::class, 'index'])
+    ->middleware('auth')->name('booking');
 
 Route::get('/profile', function () {
     return view('profile');

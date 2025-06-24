@@ -23,7 +23,9 @@ class LoginController extends Controller
         // Attempt login
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            $redirectTo = $request->query('r', route('home'));
+
+            return redirect()->intended($redirectTo);
         }
 
         return back()->withErrors([
@@ -36,6 +38,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect()->route('login')->with('success', 'Berhasil keluar.');
     }
 }

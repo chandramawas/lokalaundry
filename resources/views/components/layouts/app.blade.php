@@ -82,7 +82,8 @@
                         </div>
                     @endauth
                     @guest
-                        <x-buttons.button href="{{ route('login') }}" variant="outline">Masuk</x-buttons.button>
+                        <x-buttons.button href="{{ route('login') }}?r={{ url()->current() }}"
+                            variant="outline">Masuk</x-buttons.button>
                         <x-buttons.button href="{{ route('register') }}" variant="primary">Daftar</x-buttons.button>
                     @endguest
                 </div>
