@@ -12,10 +12,6 @@ class BookingSummary extends Component
     public $outletId;
     public $outlet;
 
-    public $selectedOutlet = 'Outlet Jakarta 1';
-    public $selectedAddress = 'Jl. Jakarta';
-    public $selectedPhone = '85776074800';
-
     public $selectedDate;
     public $selectedSession;
     public $selectedMachines = [];
