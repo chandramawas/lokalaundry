@@ -24,6 +24,14 @@ Route::get('/profile', function () {
     return view('profile');
 })->middleware('auth')->name('profile');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
 // Auth Routes
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
