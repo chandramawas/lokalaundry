@@ -118,7 +118,7 @@
             <div class="flex gap-4 justify-center">
                 <x-buttons.text-button href="{{ route('about') }}">Tentang Kami</x-buttons.text-button>
                 <span>|</span>
-                <x-buttons.text-button href="{{ route('contact') }}">Kontak</x-buttons.text-button>
+                <x-buttons.text-button href="{{ route('contact') }}">Kontak Kami</x-buttons.text-button>
             </div>
 
             {{-- Copyright --}}
