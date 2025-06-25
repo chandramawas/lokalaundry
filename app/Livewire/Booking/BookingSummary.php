@@ -71,6 +71,13 @@ class BookingSummary extends Component
 
     public function confirmPayment()
     {
+        $wallet = Wallet::where('user_id', auth()->id())->first();
+
+        if (!$wallet || $wallet->balance < $this->subtotal) {
+            $this->alert('error', 'Saldo tidak cukup untuk melakukan pembayaran');
+            return;
+        }
+
         $this->confirm('Apakah kamu yakin ingin melanjutkan pembayaran?', [
             'confirmButtonText' => 'Ya, Bayar',
             'onConfirmed' => 'confirmedPayment',
@@ -84,16 +91,8 @@ class BookingSummary extends Component
         try {
             $wallet = Wallet::where('user_id', auth()->id())->first();
 
-            if (!$wallet) {
-                $this->alert('error', 'Wallet tidak ditemukan.');
-
-                return;
-            }
-
-            // Cek saldo
-            if ($wallet->balance < $this->subtotal) {
-                $this->alert('error', 'Saldo tidak cukup untuk melakukan pembayaran.');
-
+            if (!$wallet || $wallet->balance < $this->subtotal) {
+                $this->alert('error', 'Saldo tidak cukup untuk melakukan pembayaran');
                 return;
             }
 

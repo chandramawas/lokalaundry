@@ -25,8 +25,7 @@
         </span>
 
         <span class="text-primary">
-            <span wire:loading.remove>Rp{{ number_format($subtotal, 0, ',', '.') }}</span>
-            <span wire:loading><i class="fa-solid fa-spinner fa-spin"></i> Menghitung...</span>
+            Rp{{ number_format($subtotal, 0, ',', '.') }}
         </span>
     </div>
 
@@ -39,7 +38,12 @@
                     <i class="fa-solid fa-spinner fa-spin"></i> Menghapus...
                 </span>
             </x-buttons.button>
-            <x-buttons.button variant="primary">Bayar Sekarang</x-buttons.button>
+            <x-buttons.button variant="primary" wire:click="confirmPayment" wire:loading.attr="disabled">
+                <span wire:loading wire:target="confirmPayment">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Memproses...
+                </span>
+                <span wire:loading.remove>Bayar Sekarang</span>
+            </x-buttons.button>
         </div>
     @endif
 

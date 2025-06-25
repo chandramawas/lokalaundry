@@ -5,14 +5,23 @@
             <div class="flex flex-col gap-4 items-center">
                 {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate($booking->code) !!}
                 <p class="font-bold">{{ $booking->code }}</p>
-                <x-buttons.button variant="primary" href="{{ route('booking.download.qr', $booking->code) }}">Download
-                    QR</x-buttons.button>
+                <x-buttons.button variant="primary" href="{{ route('download.qr', $booking->code) }}">
+                    Download QR
+                </x-buttons.button>
             </div>
 
             <div class="col-span-2 flex flex-col gap-6">
                 <x-ui.outlet-ui name="{{ $booking->outlet->name }}" address="{{ $booking->outlet->address }}"
                     phone="{{ $booking->outlet->phone }}" />
                 <div class="flex flex-col gap-1">
+                    <div class="text-sm flex justify-between border-b py-2">
+                        <span class="font-bold">
+                            Waktu Pembayaran
+                        </span>
+                        <span>
+                            {{ \Carbon\Carbon::parse($booking->created_at)->translatedFormat('d F Y H:i') }}
+                        </span>
+                    </div>
                     <div class="text-sm flex justify-between border-b py-2">
                         <span class="font-bold">
                             Tanggal
@@ -53,10 +62,10 @@
                         <span class="text-primary">Rp{{ number_format($booking->subtotal, 0, ',', '.') }}</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="flex justify-end">
-                    <x-buttons.button variant="outline" href="{{ route('home') }}">Kembali ke Beranda</x-buttons.button>
-                </div>
+            <div class="flex justify-end col-span-full">
+                <x-buttons.button variant="outline" href="{{ route('home') }}">Kembali ke Beranda</x-buttons.button>
             </div>
         </div>
     </x-ui.section-container>

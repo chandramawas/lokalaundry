@@ -51,10 +51,10 @@
         <x-buttons.button variant="outline" href="{{ route('outlets') }}">Batal</x-buttons.button>
         @if ($selectedMachines)
             <x-buttons.button variant="primary" wire:click="confirmPayment" wire:loading.attr="disabled">
-                <span wire:loading wire:target="processPayment">
-                    <i class="fa-solid fa-spinner fa-spin"></i>
+                <span wire:loading wire:target="confirmPayment">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Memproses...
                 </span>
-                Bayar
+                <span wire:loading.remove>Bayar Sekarang</span>
             </x-buttons.button>
         @endif
     </div>

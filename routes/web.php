@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\ProductTransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,14 +18,17 @@ Route::get('/outlets', function () {
 Route::get('/products', function () {
     return view('products');
 })->name('products');
+Route::get('/history/product/{code}', [ProductTransactionController::class, 'show'])
+    ->middleware('auth')->name('product.detail');
 
 Route::get('/booking/{outlet?}', [BookingController::class, 'index'])
     ->middleware('auth')->name('booking');
 
-Route::get('/my-booking/{bookingCode}', [BookingController::class, 'show'])
+Route::get('/history/booking/{bookingCode}', [BookingController::class, 'show'])
     ->middleware('auth')->name('booking.detail');
-Route::get('/my-booking/{bookingCode}/download-qr', [BookingController::class, 'downloadQr'])
-    ->middleware('auth')->name('booking.download.qr');
+
+Route::get('/history/{code}/qr', [DownloadController::class, 'downloadQr'])
+    ->middleware('auth')->name('download.qr');
 
 Route::get('/profile', function () {
     return view('profile');
