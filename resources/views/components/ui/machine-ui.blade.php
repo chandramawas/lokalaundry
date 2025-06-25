@@ -1,5 +1,6 @@
 @php
     $base = 'flex flex-col gap-1 items-center cursor-pointer transition-all';
+
     $color = match ($status) {
         'selected' => 'bg-primary text-on-primary',
         'available' => 'bg-machine-available text-on-primary',

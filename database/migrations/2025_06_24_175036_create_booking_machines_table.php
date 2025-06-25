@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('booking_id')->constrained()->onDelete('cascade');
             $table->foreignId('machine_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('price');
             $table->timestamps();
         });
     }

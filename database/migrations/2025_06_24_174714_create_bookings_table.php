@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->date('date');
             $table->time('session_start');
             $table->time('session_end');
+            $table->unsignedBigInteger('subtotal');
+            $table->string('code')->unique()->nullable();
             $table->timestamps();
         });
     }

@@ -11,7 +11,9 @@ class Booking extends Model
         'outlet_id',
         'date',
         'session_start',
-        'session_end'
+        'session_end',
+        'subtotal',
+        'code'
     ];
 
     public function outlet()

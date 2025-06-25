@@ -8,14 +8,12 @@
             <h3 class="text-lg font-semibold">Sesi</h3>
             <p>Tanggal:
                 <span class="font-medium">
-                    <span wire:loading.remove>{{ $selectedDate ?? '-' }}</span>
-                    <span wire:loading><i class="fa-solid fa-spinner fa-spin"></i></span>
+                    {{ $selectedDateFormatted ?? '-' }}
                 </span>
             </p>
             <p>Waktu:
                 <span class="font-medium">
-                    <span wire:loading.remove>{{ $selectedSession ?? '-' }}</span>
-                    <span wire:loading><i class="fa-solid fa-spinner fa-spin"></i></span>
+                    {{ $selectedSession ?? '-' }}
                 </span>
             </p>
             <p>Durasi Maksimal: <span class="font-medium">55 Menit</span></p>
@@ -43,8 +41,7 @@
                 <span>Subtotal</span>
 
                 <span class="text-primary">
-                    <span wire:loading.remove>Rp{{ number_format($subtotal, 0, ',', '.') }}</span>
-                    <span wire:loading><i class="fa-solid fa-spinner fa-spin"></i> Menghitung...</span>
+                    Rp{{ number_format($subtotal, 0, ',', '.') }}
                 </span>
             </div>
         </div>
@@ -53,7 +50,12 @@
     <div class="flex gap-2 justify-end">
         <x-buttons.button variant="outline" href="{{ route('outlets') }}">Batal</x-buttons.button>
         @if ($selectedMachines)
-            <x-buttons.button variant="primary">Bayar</x-buttons.button>
+            <x-buttons.button variant="primary" wire:click="confirmPayment" wire:loading.attr="disabled">
+                <span wire:loading wire:target="processPayment">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                </span>
+                Bayar
+            </x-buttons.button>
         @endif
     </div>
 </div>

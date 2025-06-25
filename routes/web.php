@@ -20,6 +20,11 @@ Route::get('/products', function () {
 Route::get('/booking/{outlet?}', [BookingController::class, 'index'])
     ->middleware('auth')->name('booking');
 
+Route::get('/my-booking/{bookingCode}', [BookingController::class, 'show'])
+    ->middleware('auth')->name('booking.detail');
+Route::get('/my-booking/{bookingCode}/download-qr', [BookingController::class, 'downloadQr'])
+    ->middleware('auth')->name('booking.download.qr');
+
 Route::get('/profile', function () {
     return view('profile');
 })->middleware('auth')->name('profile');

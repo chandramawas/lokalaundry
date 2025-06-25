@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookingMachine extends Model
 {
-    protected $fillable = ['booking_id', 'machine_id'];
+    protected $fillable = ['booking_id', 'machine_id', 'price'];
 
     public function booking()
     {
