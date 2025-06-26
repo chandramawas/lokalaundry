@@ -1,6 +1,10 @@
 <x-layouts.app title="Tentang Kami">
     <br>
-    <x-ui.section-container id="about" title="Tentang Kami">
+    <x-ui.section-container id="about">
+        <x-slot:title>
+            <span class="text-gray-600">Selamat datang di </span>BookingLaundry
+        </x-slot:title>
+
         <div class="grid grid-cols-4 gap-8">
             {{-- Desc --}}
             <div class="col-span-3 text-pretty flex flex-col font-medium gap-6">
