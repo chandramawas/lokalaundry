@@ -6,6 +6,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ProductTransactionController;
 use App\Http\Controllers\TopUpController;
+use App\Livewire\Simulator\SimulatorPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -62,3 +63,5 @@ Route::get('/contact', function () {
 Route::get('/wallet', function () {
     return view('wallet.wallet');
 })->middleware('auth')->name('wallet');
+
+Route::get('/simulator', SimulatorPage::class)->name('simulator');
