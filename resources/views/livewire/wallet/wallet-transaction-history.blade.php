@@ -5,6 +5,9 @@
             @foreach ($this->months as $month)
                 <x-buttons.button variant="{{ $selectedMonth == $month['month'] ? 'primary' : 'outline' }}"
                     wire:click="selectMonth('{{ $month['month'] }}')">
+                    <span wire:loading wire:target="selectMonth('{{ $month['month'] }}')">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                    </span>
                     {{ $month['label'] }}
                 </x-buttons.button>
             @endforeach

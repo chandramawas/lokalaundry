@@ -31,14 +31,18 @@ Route::get('/products', function () {
 Route::get('/booking/{outlet?}', [BookingController::class, 'index'])
     ->middleware('auth')->name('booking');
 
-Route::get('/history/product/{code}', [ProductTransactionController::class, 'show'])
+Route::get('/activity/product/{code}', [ProductTransactionController::class, 'show'])
     ->middleware('auth')->name('product.detail');
 
-Route::get('/history/booking/{bookingCode}', [BookingController::class, 'show'])
+Route::get('/activity/booking/{bookingCode}', [BookingController::class, 'show'])
     ->middleware('auth')->name('booking.detail');
 
-Route::get('/history/topup/{orderId}', [TopUpController::class, 'show'])
+Route::get('/activity/topup/{orderId}', [TopUpController::class, 'show'])
     ->middleware('auth')->name('topup.detail');
+
+Route::get('activity', function () {
+    return view('activity');
+})->middleware('auth')->name('activity');
 
 Route::get('/qr/{code}', [DownloadController::class, 'downloadQr'])
     ->middleware('auth')->name('download.qr');

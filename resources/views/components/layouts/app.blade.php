@@ -65,9 +65,9 @@
                                     <span class="ml-1">Profil</span>
                                 </a>
 
-                                <a href="#history" class="block px-6 py-3 hover:bg-gray-100 transition">
+                                <a href="{{ route('activity') }}" class="block px-6 py-3 hover:bg-gray-100 transition">
                                     <i class="fa-solid fa-clock-rotate-left"></i>
-                                    <span class="ml-1">Riwayat Pesanan</span>
+                                    <span class="ml-1">Aktivitas</span>
                                 </a>
 
                                 <form action="{{ route('logout') }}" method="POST">

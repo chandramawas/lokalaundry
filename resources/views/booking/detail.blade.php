@@ -6,7 +6,8 @@
                 {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate($booking->code) !!}
                 <p class="font-bold">{{ $booking->code }}</p>
                 <x-buttons.button variant="primary" href="{{ route('download.qr', $booking->code) }}">
-                    Download QR
+                    <i class="fa-solid fa-qrcode"></i>
+                    <span class="ml-1">Download QR</span>
                 </x-buttons.button>
             </div>
 
