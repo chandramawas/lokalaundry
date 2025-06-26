@@ -11,6 +11,9 @@
         @csrf
         <div class="flex flex-col gap-4">
             {{-- Name --}}
+            <x-forms.input name="email" type="email" label="Email*" value="{{ old('email') }}" placeholder="example123@gmail.com"
+                autofocus />
+
             <x-forms.input name="name" type="text" label="Nama*" value="{{ old('name') }}" placeholder="John Doe"
                 autofocus />
 
