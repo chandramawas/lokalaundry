@@ -18,15 +18,15 @@
 
     <div class="flex flex-col gap-4 bg-white p-6 rounded-xl shadow w-full max-w-lg">
         <div id="reader" width="600px"></div>
-        <x-buttons.button variant="outline" onclick="startScanner()">
-            Scan QR Code
-        </x-buttons.button>
-        <input type="text" wire:model.defer="inputCode" class="input" placeholder="Input Manual" />
+        <input type="text" wire:model.defer="inputCode" class="input p-2" placeholder="Input Manual" />
         <x-buttons.button variant="primary" wire:click="verifyCode">
             <span wire:loading wire:target="verifyCode">
                 <i class="fa-solid fa-spinner fa-spin"></i>
             </span>
-            Verifikasi
+            Verifikasi Manual
+        </x-buttons.button>
+        <x-buttons.button variant="outline" onclick="startScanner()">
+            Scan QR Code
         </x-buttons.button>
 
         @if ($message)

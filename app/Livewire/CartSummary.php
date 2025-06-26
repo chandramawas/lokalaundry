@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Cart;
+use App\Notifications\ProductTransactionSuccessNotification;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Wallet;
@@ -94,6 +95,9 @@ class CartSummary extends Component
             Cart::where('user_id', auth()->id())->delete();
 
             DB::commit();
+
+            // Kirim Email
+            auth()->user()->notify(new ProductTransactionSuccessNotification($transaction));
 
             $this->flash(
                 'success',

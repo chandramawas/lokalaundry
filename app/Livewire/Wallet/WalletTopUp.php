@@ -3,6 +3,7 @@
 namespace App\Livewire\Wallet;
 
 use App\Models\Wallet;
+use App\Notifications\TopUpSuccessNotification;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Midtrans\Snap;
@@ -76,6 +77,9 @@ class WalletTopUp extends Component
         $wallet->save();
 
         $topUp = TopUp::where('order_id', $result['order_id'])->first();
+
+        auth()->user()->notify(new TopUpSuccessNotification($topUp, $this->selectedAmount));
+
         $this->flash('success', 'Top Up berhasil!', [], route('topup.detail', $topUp->order_id));
     }
 

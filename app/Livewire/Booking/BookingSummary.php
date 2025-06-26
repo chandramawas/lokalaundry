@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Machine;
 use App\Models\Outlet;
 use App\Models\Wallet;
+use App\Notifications\BookingSuccessNotification;
 use Carbon\Carbon;
 use DB;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -113,7 +114,7 @@ class BookingSummary extends Component
                 'subtotal' => $this->subtotal,
             ]);
 
-            $booking->code = 'Booking-' . $this->outlet->id . '-' . uniqid();
+            $booking->code = 'B' . $this->outlet->id . '-' . uniqid();
             $booking->save();
 
             foreach ($this->selectedMachines as $machine) {
@@ -124,6 +125,8 @@ class BookingSummary extends Component
             }
 
             DB::commit();
+
+            auth()->user()->notify(new BookingSuccessNotification($booking));
 
             $this->flash(
                 'success',
