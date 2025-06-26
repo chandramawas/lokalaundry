@@ -9,11 +9,11 @@
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-surface: #FAFBDC;
+    --color-surface: #dcebfb;
     --color-on-surface: var(--color-gray-900);
     --color-on-surface-variant: var(--color-gray-500);
 
-    --color-primary: #BC3131;
+    --color-primary: #13426c;
     --color-on-primary: var(--color-teal-50);
 
     --color-machine-available: var(--color-green-500);

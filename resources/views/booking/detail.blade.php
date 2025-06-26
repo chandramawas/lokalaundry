@@ -65,7 +65,10 @@
             </div>
 
             <div class="flex justify-end col-span-full">
-                <x-buttons.button variant="outline" href="{{ route('home') }}">Kembali ke Beranda</x-buttons.button>
+                <x-buttons.button variant="outline"
+                    href="{{ url()->previous() !== url()->current() ? url()->previous() : route('home') }}">
+                    {{ url()->previous() !== url()->current() ? 'Kembali' : 'Kembali ke Beranda' }}
+                </x-buttons.button>
             </div>
         </div>
     </x-ui.section-container>

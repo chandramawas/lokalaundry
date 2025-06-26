@@ -15,7 +15,7 @@
                 <p class="text-lg font-medium text-on-surface">
                     Melakukan laundry menjadi lebih mudah dengan adanya booking laundry, tidak perlu menunggu.
                 </p>
-                <x-buttons.button href="#booking" class="w-fit mx-auto">
+                <x-buttons.button href="{{ route('outlets') }}" class="w-fit mx-auto">
                     Booking Sekarang
                 </x-buttons.button>
             </div>

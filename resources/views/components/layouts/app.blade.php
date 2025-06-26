@@ -34,7 +34,7 @@
                 {{-- Mid --}}
                 <div class="justify-self-center flex gap-8">
                     <x-buttons.nav-button href="{{ route('home') }}">Beranda</x-buttons.nav-button>
-                    <x-buttons.nav-button href="{{ route('outlets') }}">Daftar Outlet</x-buttons.nav-button>
+                    <x-buttons.nav-button href="{{ route('outlets') }}">Outlet</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('booking') }}">Booking</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('products') }}">Produk</x-buttons.nav-button>
                 </div>
@@ -42,10 +42,11 @@
                 {{-- Right --}}
                 <div class="justify-self-end flex gap-2 items-center">
                     @auth
-                        <x-buttons.button href="#wallet" variant="outline">
+                        <x-buttons.button href="{{ route('wallet') }}"
+                            variant="{{ url()->current() == route('wallet') ? 'primary' : 'outline' }}">
                             <i class="fa-solid fa-wallet"></i>
-                            <span class="text-primary font-medium ml-1">
-                                Rp{{ number_format(auth()->user()->wallet->balance ?? 0, 0, ',', '.') }}
+                            <span class="font-medium ml-1">
+                                Rp{{ number_format(auth()->user()->wallet->balance, 0, ',', '.') }}
                             </span>
                         </x-buttons.button>
 
@@ -128,9 +129,10 @@
         </div>
     </footer>
 
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.client_key') }}"></script>
     @livewireScripts
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <x-livewire-alert::flash />
     <x-livewire-alert::scripts />
 </body>
 
