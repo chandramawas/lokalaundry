@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BookingController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\ProductTransactionController;
 use App\Http\Controllers\TopUpController;
 use App\Livewire\Simulator\SimulatorPage;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('home');
@@ -21,6 +23,19 @@ Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Email Verification
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+    ->middleware(['auth', 'signed'])
+    ->name('verification.verify');
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('success', 'Link verifikasi telah dikirim ke email kamu!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 Route::get('/outlets', function () {
     return view('outlets');
 })->name('outlets');
@@ -29,28 +44,6 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/booking/{outlet?}', [BookingController::class, 'index'])
-    ->middleware('auth')->name('booking');
-
-Route::get('/activity/product/{code}', [ProductTransactionController::class, 'show'])
-    ->middleware('auth')->name('product.detail');
-
-Route::get('/activity/booking/{bookingCode}', [BookingController::class, 'show'])
-    ->middleware('auth')->name('booking.detail');
-
-Route::get('/activity/topup/{orderId}', [TopUpController::class, 'show'])
-    ->middleware('auth')->name('topup.detail');
-
-Route::get('activity', function () {
-    return view('activity');
-})->middleware('auth')->name('activity');
-
-Route::get('/qr/{code}', [DownloadController::class, 'downloadQr'])
-    ->middleware('auth')->name('download.qr');
-
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware('auth')->name('profile');
 
 Route::get('/about', function () {
     return view('about');
@@ -60,8 +53,34 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/wallet', function () {
-    return view('wallet.wallet');
-})->middleware('auth')->name('wallet');
+// Middleware User sudah Verify
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/booking/{outlet?}', [BookingController::class, 'index'])
+        ->name('booking');
+
+    Route::get('/activity/product/{code}', [ProductTransactionController::class, 'show'])
+        ->name('product.detail');
+
+    Route::get('/activity/booking/{bookingCode}', [BookingController::class, 'show'])
+        ->name('booking.detail');
+
+    Route::get('/activity/topup/{orderId}', [TopUpController::class, 'show'])
+        ->name('topup.detail');
+
+    Route::get('activity', function () {
+        return view('activity');
+    })->name('activity');
+
+    Route::get('/qr/{code}', [DownloadController::class, 'downloadQr'])
+        ->name('download.qr');
+
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+
+    Route::get('/wallet', function () {
+        return view('wallet.wallet');
+    })->name('wallet');
+});
 
 Route::get('/simulator', SimulatorPage::class)->name('simulator');
