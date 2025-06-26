@@ -12,7 +12,7 @@
                 <h1 class="text-4xl font-bold text-primary">
                     Laundry Made Easy
                 </h1>
-                <p class="text-lg font-medium text-on-surface">
+                <p class="text-lg font-semibold text-primary">
                     Melakukan laundry menjadi lebih mudah dengan adanya booking laundry, tidak perlu menunggu.
                 </p>
                 <x-buttons.button href="{{ route('outlets') }}" class="w-fit mx-auto">
@@ -24,12 +24,7 @@
 
     {{-- Services --}}
     <x-ui.section-container id="services" title="Layanan Kami">
-        <div class="grid grid-cols-4 gap-2">
-            <x-ui.service-ui icon="fa-solid fa-calendar-days" descDisplay="365" descBody="Hari" />
-            <x-ui.service-ui icon="fa-solid fa-store" descDisplay="50" descBody="Outlet" />
-            <x-ui.service-ui icon="fa-solid fa-building-wheat" descDisplay="6" descBody="Kota" />
-            <x-ui.service-ui icon="fa-solid fa-clock" descDisplay="24" descBody="Jam Buka" />
-        </div>
+        <livewire:services />
     </x-ui.section-container>
 
     {{-- Feedback --}}

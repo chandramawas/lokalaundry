@@ -17,14 +17,17 @@
             </div>
             <div
                 class="p-4 border border-primary rounded-xl flex flex-col gap-2 font-medium justify-center items-center">
-                <x-buttons.icon-button class="size-fit text-4xl rounded-xl p-4" href="#whatsapp">
+                <x-buttons.icon-button class="size-fit text-4xl rounded-xl p-4"
+                    href="https://wa.me/6285776074800?text=Halo%20saya%20mau%20tanya%20tentang%20BookingLaundry"
+                    target="_blank">
                     <i class="fa-brands fa-whatsapp"></i>
                 </x-buttons.icon-button>
                 <span>+62 81234567890</span>
             </div>
             <div
                 class="p-4 border border-primary rounded-xl flex flex-col gap-2 font-medium justify-center items-center">
-                <x-buttons.icon-button class="size-fit text-4xl rounded-xl p-4" href="#instagram">
+                <x-buttons.icon-button class="size-fit text-4xl rounded-xl p-4"
+                    href="https://www.instagram.com/BookingLaundry" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </x-buttons.icon-button>
                 <span>@booking.laundry</span>

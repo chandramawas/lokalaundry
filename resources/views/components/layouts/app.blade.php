@@ -105,10 +105,12 @@
 
             {{-- Social Media --}}
             <div class="flex gap-4 justify-center">
-                <x-buttons.icon-button href="#whatsapp">
+                <x-buttons.icon-button
+                    href="https://wa.me/6285776074800?text=Halo%20saya%20mau%20tanya%20tentang%20BookingLaundry"
+                    target="_blank">
                     <i class="fa-brands fa-whatsapp"></i>
                 </x-buttons.icon-button>
-                <x-buttons.icon-button href="#instagram">
+                <x-buttons.icon-button href="https://www.instagram.com/BookingLaundry" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </x-buttons.icon-button>
             </div>
