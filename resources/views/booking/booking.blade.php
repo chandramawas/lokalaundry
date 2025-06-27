@@ -21,7 +21,7 @@
     </x-ui.section-container>
 
     {{-- Booking Summary --}}
-    <x-ui.section-container id="booking-summary" title="Ringkasan Booking">
+    <x-ui.section-container id="booking-summary">
         <livewire:booking.booking-summary outletId="{{ $outlet->id }}" />
     </x-ui.section-container>
 </x-layouts.app>

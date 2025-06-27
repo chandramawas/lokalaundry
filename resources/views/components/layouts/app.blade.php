@@ -28,7 +28,7 @@
             <div class="max-w-7xl mx-auto text-sm grid grid-cols-3 items-center">
                 {{-- Left --}}
                 <div>
-                    <a href="{{ route('home') }}" class="text-primary font-bold text-lg">BookingLaundry</a>
+                    <a href="{{ route('home') }}" class="text-primary font-bold text-lg">{{ config('app.name') }}</a>
                 </div>
 
                 {{-- Mid --}}
@@ -101,16 +101,16 @@
     <footer class="bg-white py-6 px-8">
         <div class="max-w-7xl mx-auto text-base text-center flex flex-col gap-4">
             {{-- Brand --}}
-            <h4 class="font-bold text-primary text-xl">BookingLaundry</h4>
+            <h4 class="font-bold text-primary text-xl">{{ config('app.name') }}</h4>
 
             {{-- Social Media --}}
             <div class="flex gap-4 justify-center">
                 <x-buttons.icon-button
-                    href="https://wa.me/6285776074800?text=Halo%20saya%20mau%20tanya%20tentang%20BookingLaundry"
+                    href="https://wa.me/6285776074800?text=Halo%20saya%20mau%20tanya%20tentang%20{{ config('app.name') }}"
                     target="_blank">
                     <i class="fa-brands fa-whatsapp"></i>
                 </x-buttons.icon-button>
-                <x-buttons.icon-button href="https://www.instagram.com/BookingLaundry" target="_blank">
+                <x-buttons.icon-button href="https://www.instagram.com/lokalaundry" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </x-buttons.icon-button>
             </div>
@@ -126,7 +126,7 @@
 
             {{-- Copyright --}}
             <p class="text-xs text-on-surface-variant">
-                &copy; {{ date('Y') }} BookingLaundry. All rights reserved.
+                &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
             </p>
         </div>
     </footer>

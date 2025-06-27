@@ -57,7 +57,7 @@ class TimeSessionPicker extends Component
 
             // Cek apakah sesi sudah lewat
             $isDisabled = false;
-            if ($selectedDateObj->isToday() && $startTime->lessThanOrEqualTo($now)) {
+            if ($selectedDateObj->isToday() && $endTime->lessThan($now)) {
                 $isDisabled = true;
             }
 
