@@ -6,7 +6,7 @@
             <span wire:loading wire:target="setMode('machine')">
                 <i class="fa-solid fa-spinner fa-spin"></i>
             </span>
-            Simulasi Mesin
+            Simulasi Booking
         </x-buttons.button>
         <x-buttons.button variant="{{ $mode === 'product' ? 'primary' : 'outline' }}" wire:click="setMode('product')">
             <span wire:loading wire:target="setMode('product')">
@@ -18,15 +18,18 @@
 
     <div class="flex flex-col gap-4 bg-white p-6 rounded-xl shadow w-full max-w-lg">
         <div id="reader" width="600px"></div>
-        <input type="text" wire:model.defer="inputCode" class="input p-2" placeholder="Input Manual" />
-        <x-buttons.button variant="primary" wire:click="verifyCode">
+        <x-buttons.button variant="primary" onclick="startScanner()">
+            Scan QR Code
+        </x-buttons.button>
+    </div>
+
+    <div class="flex flex-col gap-4 bg-white p-6 rounded-xl shadow w-full max-w-lg">
+        <input type="text" wire:model.defer="inputCode" class="input p-2" placeholder="Input" />
+        <x-buttons.button variant="outline" wire:click="verifyCode">
             <span wire:loading wire:target="verifyCode">
                 <i class="fa-solid fa-spinner fa-spin"></i>
             </span>
             Verifikasi Manual
-        </x-buttons.button>
-        <x-buttons.button variant="outline" onclick="startScanner()">
-            Scan QR Code
         </x-buttons.button>
 
         @if ($message)

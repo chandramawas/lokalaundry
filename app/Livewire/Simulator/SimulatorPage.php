@@ -51,12 +51,19 @@ class SimulatorPage extends Component
         $sessionStart = Carbon::parse($booking->date . ' ' . $booking->session_start);
         $sessionEnd = Carbon::parse($booking->date . ' ' . $booking->session_end);
 
-        if ($now->between($sessionStart, $sessionEnd)) {
-            $this->booking = $booking;
-            $this->message = 'Mesin berhasil diaktifkan!';
-        } else {
-            $this->message = 'Sesi booking belum dimulai atau sudah berakhir.';
+        if ($now->lt($sessionStart)) { // Sekarang kurang dari jam mulai
+            $this->message = 'Sesi booking belum dimulai.';
+            return;
         }
+
+        if ($now->gt($sessionEnd)) { // Sekarang lebih dari jam selesai
+            $this->message = 'Sesi booking sudah berakhir.';
+            return;
+        }
+
+        // Kalau waktunya valid
+        $this->booking = $booking;
+        $this->message = 'Mesin berhasil diaktifkan!';
     }
 
     public function verifyProduct()
