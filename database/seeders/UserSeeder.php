@@ -15,16 +15,28 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $admin = User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'phone' => '81234567890',
+            'password' => Hash::make('admin'),
+            'is_admin' => true,
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         $user = User::create([
             'name' => 'John Doe',
             'email' => 'example1@gmail.com',
-            'phone' => '81234567890',
+            'phone' => '81234567891',
             'password' => Hash::make('password'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        $user->wallet()->update(['balance' => 100000]);
+        $user->wallet()->update(['balance' => 50000]);
+        $admin->wallet()->update(['balance' => 1000000]);
     }
 }

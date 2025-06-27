@@ -12,4 +12,9 @@ class ProductTransaction extends Model
     {
         return $this->hasMany(ProductTransactionItem::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

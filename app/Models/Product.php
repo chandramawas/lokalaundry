@@ -15,4 +15,9 @@ class Product extends Model
         'price',
         'image',
     ];
+
+    public function transactionItems()
+    {
+        return $this->hasMany(ProductTransactionItem::class);
+    }
 }

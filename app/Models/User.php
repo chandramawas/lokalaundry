@@ -3,15 +3,21 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        return $this->is_admin;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -19,10 +25,12 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var list<string>
      */
     protected $fillable = [
+        'avatar',
         'email',
         'name',
         'phone',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -69,5 +77,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function bookings()
     {
         return $this->hasMany(Booking::class);
+    }
+
+    public function productTransactions()
+    {
+        return $this->hasMany(ProductTransaction::class);
+    }
+
+    public function topUps()
+    {
+        return $this->hasMany(TopUp::class);
     }
 }

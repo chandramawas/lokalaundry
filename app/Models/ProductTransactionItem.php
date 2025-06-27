@@ -12,4 +12,9 @@ class ProductTransactionItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function transaction()
+    {
+        return $this->belongsTo(ProductTransaction::class, 'product_transaction_id');
+    }
 }

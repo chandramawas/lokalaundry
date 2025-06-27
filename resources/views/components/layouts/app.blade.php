@@ -113,8 +113,8 @@
                 <x-buttons.icon-button href="https://www.instagram.com/lokalaundry" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </x-buttons.icon-button>
-                <x-buttons.icon-button href="mailto:info@bookinglaundry.com" target="_blank">
-                    <i class="fa-solid fa-envelope"></i>
+                <x-buttons.icon-button href="mailto:{{ env('MAIL_USERNAME') }}" target="_blank">
+                    <i class="fa-regular fa-envelope"></i>
                 </x-buttons.icon-button>
             </div>
 
