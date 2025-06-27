@@ -32,12 +32,6 @@
             </div>
             {{-- Logo --}}
             <img src="{{ asset('images/placeholder.jpg') }}" alt="Logo">
-
-            <div class="col-span-4 flex">
-                <x-buttons.button href="{{ route('contact') }}">
-                    Hubungi Kami
-                </x-buttons.button>
-            </div>
         </div>
     </x-ui.section-container>
 
