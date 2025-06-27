@@ -21,7 +21,11 @@ Sebelum mulai, pastiin kalian udah install:
 1. **Clone Project**
 
    ```bash
+<<<<<<< HEAD
    git clone https://github.com/chandramawas/lokalaundry.git
+=======
+   git clone <repo-url>
+>>>>>>> a17b2bab26927e3456e0f129b476177e6f6c4ce1
    cd lokalaundry
    ```
 
@@ -64,14 +68,27 @@ Sebelum mulai, pastiin kalian udah install:
    php artisan migrate --seed
    ```
 
+<<<<<<< HEAD
 7. **Run Development Server + Vite (Auto)**
+=======
+7. **Run Development Server**
+
+   ```bash
+   php artisan serve
+   ```
+
+8. **Run Dev Build (Vite)**
+>>>>>>> a17b2bab26927e3456e0f129b476177e6f6c4ce1
 
    ```bash
    composer run dev
    ```
 
+<<<<<<< HEAD
    > Laravel 12 udah auto jalanin PHP server dan Vite sekaligus dengan perintah ini.
 
+=======
+>>>>>>> a17b2bab26927e3456e0f129b476177e6f6c4ce1
 ---
 
 ## 🔑 Midtrans Setup
@@ -103,6 +120,7 @@ Kalau ada error, tinggal jalankan:
 ```bash
 php artisan optimize:clear
 ```
+<<<<<<< HEAD
 
 ---
 
@@ -119,3 +137,5 @@ Pastikan sebelum `git pull`, project kalian dalam keadaan clean (gak ada perubah
 ---
 
 Happy coding gengs! 🚀💪
+=======
+>>>>>>> a17b2bab26927e3456e0f129b476177e6f6c4ce1
