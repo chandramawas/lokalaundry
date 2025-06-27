@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Machine;
 use App\Models\Outlet;
 use App\Models\Wallet;
+use App\Notifications\BookingSuccessNotification;
 use Carbon\Carbon;
 use DB;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -21,6 +22,7 @@ class BookingSummary extends Component
     public $selectedDate;
     public $selectedDateFormatted;
     public $selectedSession;
+    public $maxDuration;
     public $selectedMachines = [];
 
     public $subtotal = 0;
@@ -50,7 +52,25 @@ class BookingSummary extends Component
     public function updateSession($session)
     {
         $this->selectedSession = $session;
+
+        $sessionParts = explode(' - ', $this->selectedSession);
+        $sessionStart = $sessionParts[0];
+        $sessionEnd = $sessionParts[1];
+
+        $now = Carbon::now();
+        $sessionStartTime = Carbon::parse($this->selectedDate . ' ' . $sessionStart);
+        $sessionEndTime = Carbon::parse($this->selectedDate . ' ' . $sessionEnd);
+
+        if ($now->greaterThan($sessionStartTime)) {
+            $duration = $now->diffInMinutes($sessionEndTime);
+        } else {
+            $duration = $sessionStartTime->diffInMinutes($sessionEndTime);
+        }
+
+        // Pastikan hasilnya integer + tambahin label
+        $this->maxDuration = round($duration) . ' Menit';
     }
+
 
     public function updateMachines($machines)
     {
@@ -100,6 +120,14 @@ class BookingSummary extends Component
             $sessionStart = $sessionParts[0];
             $sessionEnd = $sessionParts[1];
 
+            $now = Carbon::now();
+            $sessionEndTime = Carbon::parse($this->selectedDate . ' ' . $sessionEnd);
+
+            if ($now->greaterThanOrEqualTo($sessionEndTime)) {
+                $this->alert('error', 'Sesi sudah berakhir. Tidak bisa melakukan booking.');
+                return;
+            }
+
             // Kurangi Saldo
             $wallet->balance -= $this->subtotal;
             $wallet->save();
@@ -113,7 +141,7 @@ class BookingSummary extends Component
                 'subtotal' => $this->subtotal,
             ]);
 
-            $booking->code = 'Booking-' . $this->outlet->id . '-' . uniqid();
+            $booking->code = 'B' . $this->outlet->id . '-' . uniqid();
             $booking->save();
 
             foreach ($this->selectedMachines as $machine) {
@@ -124,6 +152,8 @@ class BookingSummary extends Component
             }
 
             DB::commit();
+
+            auth()->user()->notify(new BookingSuccessNotification($booking));
 
             $this->flash(
                 'success',

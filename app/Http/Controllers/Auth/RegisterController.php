@@ -16,21 +16,24 @@ class RegisterController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'phone' => 'required|string|min:10|max:15|unique:users,phone',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|min:10|max:15|unique:users,phone',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
 
-    $user = User::create([
-        'name' => $request->name,
-        'phone' => $request->phone,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-    ]);
+        $user = User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-    return redirect()->route('login')->with('success', 'Berhasil membuat akun. Silahkan Masuk!');
+        Auth::login($user);
+        $user->sendEmailVerificationNotification();
+
+        return redirect()->route('verification.notice')->with('success', 'Akun berhasil dibuat. Silakan verifikasi email kamu.');
+    }
 }
-} 

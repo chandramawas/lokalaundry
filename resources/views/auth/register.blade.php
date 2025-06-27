@@ -1,21 +1,18 @@
 <x-layouts.auth title="Daftar">
     {{-- Header --}}
-    <div class="flex flex-col gap-2">
-        <h2 class="text-4xl font-bold text-primary">
-            Daftar
-        </h2>
-    </div>
+    <h2 class="text-4xl font-bold text-primary">
+        Daftar
+    </h2>
 
     {{-- Form --}}
-    <form action="" method="post" class="flex flex-col gap-6">
+    <form action="" method="post" class="flex flex-col gap-4">
         @csrf
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
             {{-- Name --}}
-            <x-forms.input name="email" type="email" label="Email*" value="{{ old('email') }}" placeholder="example123@gmail.com"
-                autofocus />
+            <x-forms.input name="email" type="email" label="Email*" value="{{ old('email') }}"
+                placeholder="emailkamu@gmail.com" autofocus />
 
-            <x-forms.input name="name" type="text" label="Nama*" value="{{ old('name') }}" placeholder="John Doe"
-                autofocus />
+            <x-forms.input name="name" type="text" label="Nama*" value="{{ old('name') }}" placeholder="John Doe" />
 
             {{-- Phone Number --}}
             <x-forms.input name="phone" type="number" label="Nomor Telepon*" prefix="+62" value="{{ old('phone') }}"
@@ -33,11 +30,9 @@
     </form>
 
     {{-- Other Button --}}
-    <div class="mt-4 text-center">
-        <p class="text-sm text-on-surface-variant">
-            Sudah memiliki akun?
-            <x-buttons.text-button href="{{ route('login') }}"
-                class="text-primary font-medium">Masuk</x-buttons.text-button>
-        </p>
-    </div>
+    <p class="text-sm text-on-surface-variant text-center">
+        Sudah memiliki akun?
+        <x-buttons.text-button href="{{ route('login') }}"
+            class="text-primary font-medium">Masuk</x-buttons.text-button>
+    </p>
 </x-layouts.auth>

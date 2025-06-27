@@ -1,4 +1,8 @@
 <x-layouts.app title="Beranda">
+    @if (session('success'))
+        <script>alert("{{ session('success') }}")</script>
+    @endif
+
     {{-- Hero --}}
     <section id="hero" class="relative h-[calc(100vh-96px)] overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/10 via-blue-100 to-white">
         {{-- Background Image --}}

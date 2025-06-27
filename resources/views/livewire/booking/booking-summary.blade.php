@@ -4,19 +4,23 @@
 
     <div class="grid grid-cols-2 gap-4">
         {{-- Choosen Session --}}
-        <div class="flex flex-col gap-1">
-            <h3 class="text-lg font-semibold">Sesi</h3>
+        <div class="flex flex-col gap-2">
+            <h3 class="text-lg font-semibold">Ringkasan Booking</h3>
             <p>Tanggal:
                 <span class="font-medium">
                     {{ $selectedDateFormatted ?? '-' }}
                 </span>
             </p>
-            <p>Waktu:
-                <span class="font-medium">
-                    {{ $selectedSession ?? '-' }}
-                </span>
-            </p>
-            <p>Durasi Maksimal: <span class="font-medium">55 Menit</span></p>
+            @if ($selectedSession)
+                <p>Sesi:
+                    <span class="font-medium">
+                        {{ $selectedSession }}
+                    </span>
+                </p>
+            @endif
+            @if ($maxDuration)
+                <p>Durasi Maksimal: <span class="font-medium">{{ $maxDuration }}</span></p>
+            @endif
         </div>
 
         {{-- Product List --}}
