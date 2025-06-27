@@ -1,7 +1,7 @@
 <x-layouts.app title="Kontak">
     <br>
     <x-ui.section-container id="contact" title="Kontak">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="flex flex-col items-center justify-center gap-4 p-8 border border-primary/30 rounded-2xl bg-gradient-to-br from-green-50 via-white to-green-100 shadow-md hover:scale-105 transition-transform duration-200">
                 <x-buttons.icon-button class="size-fit text-5xl rounded-xl p-4 bg-green-100 hover:bg-green-200 transition-all duration-200"
                     href="https://wa.me/6285776074800?text=Halo%20saya%20mau%20tanya%20tentang%20BookingLaundry"
