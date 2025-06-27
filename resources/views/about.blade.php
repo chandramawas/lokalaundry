@@ -2,14 +2,17 @@
     <br>
     <x-ui.section-container id="about">
         <x-slot:title>
-            <span class="text-gray-600">Selamat datang di </span>BookingLaundry
+            <div class="flex items-center mb-4">
+                <span class="text-gray-600 text-base mr-2">Selamat datang di</span>
+                <span class="text-primary font-extrabold text-2xl tracking-wide bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent drop-shadow-md">BookingLaundry</span>
+            </div>
         </x-slot:title>
 
-        <div class="grid grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-center bg-white rounded-xl shadow-lg p-8">
             {{-- Desc --}}
-            <div class="col-span-3 text-pretty flex flex-col font-medium gap-6">
+            <div class="md:col-span-3 flex flex-col font-medium gap-6 text-gray-700 text-lg leading-relaxed">
                 <p>
-                    <span class="text-primary font-bold">BookingLaundry</span>
+                    <span class="text-primary font-bold text-xl">BookingLaundry</span>
                     hadir untuk menjawab kebutuhan mencuci pakaian secara mandiri tanpa harus memiliki mesin
                     cuci sendiri. Kami adalah platform online yang memungkinkan Anda memesan penggunaan mesin cuci di
                     laundry self-service secara praktis, cepat, dan terjadwal
@@ -20,10 +23,8 @@
                 </p>
                 <p>
                     Layanan kami sangat cocok untuk Anda yang tinggal di kos, apartemen, atau lingkungan dengan
-                    keterbatasan
-                    fasilitas mencuci. Dengan menggunakan layanan kami, Anda tetap bisa mencuci pakaian dengan nyaman
-                    dan
-                    efisien tanpa biaya besar.
+                    keterbatasan fasilitas mencuci. Dengan menggunakan layanan kami, Anda tetap bisa mencuci pakaian dengan nyaman
+                    dan efisien tanpa biaya besar.
                 </p>
                 <p>
                     Kami percaya bahwa mencuci pakaian seharusnya tidak merepotkan. Karena itu, kami hadir untuk membuat
@@ -31,7 +32,9 @@
                 </p>
             </div>
             {{-- Logo --}}
-            <img src="{{ asset('images/placeholder.jpg') }}" alt="Logo">
+            <div class="flex justify-center md:justify-end items-center">
+                <img src="{{ asset('images/placeholder.jpg') }}" alt="Logo" class="w-40 h-40 object-cover rounded-full shadow-md border-4 border-primary bg-gray-100">
+            </div>
         </div>
     </x-ui.section-container>
 
