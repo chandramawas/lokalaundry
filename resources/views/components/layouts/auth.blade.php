@@ -31,7 +31,7 @@
             {{-- Content --}}
             <div class="relative z-10 size-full flex items-center justify-center px-6">
                 <a href="{{ route('home') }}" class="text-4xl font-bold text-primary">
-                    BookingLaundry
+                    {{ config('app.name') }}
                 </a>
             </div>
         </div>
