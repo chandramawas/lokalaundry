@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Molto Sachet 40ml',
                 'price' => 3000,
-                'image' => 'product_image/Molto-40ml.png',
+                'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

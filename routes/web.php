@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ProductTransactionController;
@@ -35,6 +37,14 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('success', 'Link verifikasi telah dikirim ke email kamu!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+// Forgot Password Routes
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// Reset Password Routes
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/outlets', function () {
     return view('outlets');

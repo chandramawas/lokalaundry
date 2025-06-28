@@ -18,7 +18,7 @@
                     <input type="checkbox" name="remember" class="rounded border-gray-300">
                     <span>Remember Me</span>
                 </label>
-                <x-buttons.text-button href="#forgot-password" class="text-primary">
+                <x-buttons.text-button href="{{ route('password.request') }}" class="text-primary">
                     Lupa Kata Sandi?
                 </x-buttons.text-button>
             </div>

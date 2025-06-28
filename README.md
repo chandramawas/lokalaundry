@@ -74,10 +74,11 @@ Sebelum mulai, pastiin kalian udah install:
 
 ---
 
-## 🔑 Midtrans Setup
+## 🔑 Key Setup
 
 * API Key yang dipake udah disiapin di file `.env`.
 * Pastikan mode sandbox Midtrans aktif dan API key-nya sesuai.
+* Untuk email, project ini sudah terhubung dengan SMTP Gmail (akun: `lokapustaka.cs@gmail.com`).
 
 ---
 
@@ -85,8 +86,23 @@ Sebelum mulai, pastiin kalian udah install:
 
 * **Session & Queue** sudah disetup pake database.
 * Pastikan MySQL dan Redis sudah berjalan kalau mau support cache & queue penuh.
-* Untuk email, project ini sudah terhubung dengan SMTP Gmail (akun: `lokapustaka.cs@gmail.com`).
 * Gak usah ganti `APP_KEY` kalau sudah generate.
+* Kalau mau seeder full uncomment code di `/database/seeders/DatabaseSeeder.php`.
+
+---
+
+## ⚙️ URL
+
+* `/` untuk User.
+* `/admin` untuk Admin.
+* `/simulator` untuk simulasi kode.
+
+---
+
+## ⚙️ Akun Admin
+
+* Email : `admin@lokalaundry.com`.
+* Password : `admin`.
 
 ---
 
