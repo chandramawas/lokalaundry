@@ -1,8 +1,8 @@
-<div class="grid grid-cols-6 gap-3">
+<div class="grid grid-cols-1 md:grid-cols-6 gap-3">
     {{-- Select Machines --}}
-    <div class="relative col-span-4 border border-primary py-4 px-8 rounded-lg flex flex-col gap-4">
+    <div class="relative md:col-span-4 border border-primary py-4 px-8 rounded-lg flex flex-col gap-4">
         {{-- Color Legend --}}
-        <div class="grid grid-cols-3 gap-4 text-sm">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
             <x-ui.color-legend color="machine-available" label="Tersedia" />
             <x-ui.color-legend color="machine-booked" label="Dibooking" />
             <x-ui.color-legend color="machine-maintenance" label="Dalam Perbaikan" />
@@ -21,7 +21,7 @@
     </div>
 
     {{-- Prices --}}
-    <div class="col-span-2 border border-primary p-4 rounded-lg flex flex-col gap-2">
+    <div class="md:col-span-2 border border-primary p-4 rounded-lg flex flex-col gap-2">
         <h3 class="font-bold text-lg">Price List</h3>
         <hr>
         @forelse ($prices as $price)

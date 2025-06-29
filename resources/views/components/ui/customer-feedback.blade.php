@@ -1,4 +1,4 @@
-<div class="flex gap-2 text-on-surface">
+<div class="flex gap-2 text-on-surface items-start">
     {{-- Avatar --}}
     <div class="size-12 shrink-0 rounded-full overflow-hidden border border-primary">
         <x-ui.user-avatar avatar="{{ $avatar }}" :name="$name" />

@@ -7,7 +7,7 @@
       <div class="relative flex items-center mb-4">
         <span class="text-gray-600 text-base mr-2">Selamat datang di</span>
         <span
-          class="text-primary font-extrabold text-2xl tracking-wide bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent drop-shadow-md">{{ config('app.name') }}</span>
+          class="text-primary font-extrabold text-2xl tracking-wide bg-gradient-to-r from-primary to-blue-400 bg-clip-text drop-shadow-md">{{ config('app.name') }}</span>
         <!-- Bubble Animation Container -->
         <div class="absolute left-0 top-0 w-full h-24 pointer-events-none overflow-visible z-0">
           <span class="bubble absolute left-10 animate-bubble w-6 h-6 bg-blue-200 rounded-full opacity-70"></span>

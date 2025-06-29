@@ -1,7 +1,7 @@
 <x-layouts.app title="Kontak">
     <br>
     <x-ui.section-container id="contact" title="Kontak">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div
                 class="flex flex-col items-center justify-center gap-4 p-8 border border-primary/30 rounded-2xl bg-gradient-to-br from-green-50 via-white to-green-100 shadow-md hover:scale-105 transition-transform duration-200">
                 <x-buttons.icon-button

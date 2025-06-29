@@ -1,4 +1,4 @@
-<div class="grid grid-cols-7 gap-2">
+<div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-2 text-xs md:text-sm lg:text-base">
     @foreach ($dates as $date)
         @php
             $isSelected = $selectedDate === $date
@@ -7,12 +7,12 @@
         <x-buttons.button wire:click="selectDate('{{ $date }}')" variant="{{ $isSelected ? 'primary' : 'outline' }}">
             <div class="flex flex-col gap-1">
                 <span wire:loading.remove wire:target="selectDate('{{ $date }}')">
-                    <span class="font-normal">
-                        {{ \Carbon\Carbon::parse($date)->isToday() ? 'Hari Ini' : \Carbon\Carbon::parse($date)->translatedFormat('l') }}
-                    </span>
-                    <span>
+                    <div class="font-normal">
+                        {{ \Carbon\Carbon::parse($date)->translatedFormat('l') }}
+                    </div>
+                    <div>
                         {{ \Carbon\Carbon::parse($date)->format('d/m') }}
-                    </span>
+                    </div>
                 </span>
                 <span wire:loading wire:target="selectDate('{{ $date }}')">
                     <i class="fa-solid fa-spinner fa-spin"></i>

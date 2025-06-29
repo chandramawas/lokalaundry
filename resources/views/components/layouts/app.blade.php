@@ -24,23 +24,22 @@
 <body class="bg-surface text-on-surface font-sans antialiased cursor-default">
     <div class="min-h-screen">
         {{-- Navbar --}}
-        <nav class="sticky top-0 z-50 backdrop-blur bg-surface/70 border-b border-on-surface/10 py-6 px-8">
-            <div class="max-w-7xl mx-auto text-sm grid grid-cols-3 items-center">
-                {{-- Left --}}
-                <div>
-                    <a href="{{ route('home') }}" class="text-primary font-bold text-lg">{{ config('app.name') }}</a>
-                </div>
+        <nav class="sticky top-0 z-50 backdrop-blur bg-surface/70 border-b border-on-surface/10 py-6 px-4 md:px-8">
+            <div class="max-w-7xl mx-auto text-sm flex justify-between items-center">
 
-                {{-- Mid --}}
-                <div class="justify-self-center flex gap-8">
+                {{-- Brand --}}
+                <a href="{{ route('home') }}" class="text-primary font-bold text-lg">{{ config('app.name') }}</a>
+
+                {{-- Desktop Menu --}}
+                <div class="hidden md:flex gap-4 lg:gap-8">
                     <x-buttons.nav-button href="{{ route('home') }}">Beranda</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('outlets') }}">Outlet</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('booking') }}">Booking</x-buttons.nav-button>
                     <x-buttons.nav-button href="{{ route('products') }}">Produk</x-buttons.nav-button>
                 </div>
 
-                {{-- Right --}}
-                <div class="justify-self-end flex gap-2 items-center">
+                {{-- User / Auth Buttons --}}
+                <div class="flex gap-2 items-center">
                     @auth
                         <x-buttons.button href="{{ route('wallet') }}"
                             variant="{{ url()->current() == route('wallet') ? 'primary' : 'outline' }}">
@@ -87,6 +86,21 @@
                             variant="outline">Masuk</x-buttons.button>
                         <x-buttons.button href="{{ route('register') }}" variant="primary">Daftar</x-buttons.button>
                     @endguest
+                    {{-- Mobile Menu Button --}}
+                    <div class="md:hidden" x-data="{ open: false }">
+                        <button @click="open = !open" class="text-2xl">
+                            <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                        </button>
+
+                        {{-- Mobile Menu --}}
+                        <div x-show="open" x-transition
+                            class="absolute top-20 right-4 bg-white border border-gray-200 text-on-surface rounded-lg shadow-lg w-40 flex flex-col text-left z-50">
+                            <a href="{{ route('home') }}" class="px-4 py-2 hover:bg-gray-100">Beranda</a>
+                            <a href="{{ route('outlets') }}" class="px-4 py-2 hover:bg-gray-100">Outlet</a>
+                            <a href="{{ route('booking') }}" class="px-4 py-2 hover:bg-gray-100">Booking</a>
+                            <a href="{{ route('products') }}" class="px-4 py-2 hover:bg-gray-100">Produk</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

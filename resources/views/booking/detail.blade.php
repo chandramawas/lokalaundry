@@ -1,8 +1,9 @@
 <x-layouts.app title="Detail Booking">
     <br>
     <x-ui.section-container id="about" title="Detail Booking">
-        <div class="grid grid-cols-3 gap-6">
-            <div class="flex flex-col gap-4 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {{-- QR Code Section --}}
+            <div class="flex flex-col gap-4 items-center text-center">
                 {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate($booking->code) !!}
                 <p class="font-bold">{{ $booking->code }}</p>
                 <x-buttons.button variant="primary" href="{{ route('download.qr', $booking->code) }}">
@@ -11,11 +12,14 @@
                 </x-buttons.button>
             </div>
 
-            <div class="col-span-2 flex flex-col gap-6">
+            {{-- Detail Section --}}
+            <div class="md:col-span-2 flex flex-col gap-6">
                 <x-ui.terms.booking />
                 <x-ui.outlet-ui name="{{ $booking->outlet->name }}" address="{{ $booking->outlet->address }}"
                     phone="{{ $booking->outlet->phone }}" />
-                <div class="flex flex-col gap-1">
+
+                {{-- Booking Info --}}
+                <div class="flex flex-col gap-1 w-full">
                     <div class="text-sm flex justify-between border-b py-2">
                         <span class="font-bold">
                             Waktu Pembayaran
@@ -44,7 +48,8 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-1">
+                {{-- Machine Info --}}
+                <div class="flex flex-col gap-1 w-full">
                     <h2 class="font-bold text-lg">Mesin</h2>
                     @foreach($booking->bookingMachines as $bookingMachine)
                         <div class="text-sm flex justify-between border-b py-2">
@@ -66,7 +71,8 @@
                 </div>
             </div>
 
-            <div class="flex justify-end col-span-full">
+            {{-- Back Button --}}
+            <div class="flex justify-center md:justify-end col-span-full">
                 <x-buttons.button variant="outline"
                     href="{{ url()->previous() !== url()->current() ? url()->previous() : route('home') }}">
                     {{ url()->previous() !== url()->current() ? 'Kembali' : 'Kembali ke Beranda' }}

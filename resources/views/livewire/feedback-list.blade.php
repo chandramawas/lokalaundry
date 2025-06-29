@@ -1,4 +1,4 @@
-<div wire:poll.5s class="flex-1 overflow-y-auto pr-2 space-y-4">
+<div wire:poll.5s class="flex-1 overflow-y-auto pr-2 space-y-4" x-data x-transition>
     @forelse ($feedbacks as $feedback)
         <x-ui.customer-feedback name="{{ $feedback->user->name }}" avatar="{{ $feedback->user->avatar }}"
             createdAt="{{ $feedback->created_at->diffForHumans() }}">

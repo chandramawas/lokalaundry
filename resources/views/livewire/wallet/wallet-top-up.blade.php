@@ -6,7 +6,7 @@
     })" class="space-y-6">
 
     <x-ui.section-container id="topup" title="Pilih Nominal Saldo">
-        <div class="grid grid-cols-3 gap-6 h-50">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
             @foreach([10000, 20000, 25000, 50000, 75000, 100000] as $amount)
                 <x-buttons.button variant="{{ $selectedAmount === $amount ? 'primary' : 'outline' }}"
                     wire:click="selectAmount({{ $amount }})">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="flex gap-2 justify-end">
+                <div class="flex gap-2 justify-center md:justify-end">
                     <x-buttons.button variant="primary" wire:click="initiatePayment">
                         <span wire:loading.remove wire:target="initiatePayment">Bayar Sekarang</span>
                         <span wire:loading wire:target="initiatePayment">

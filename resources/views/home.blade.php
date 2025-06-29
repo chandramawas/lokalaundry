@@ -37,7 +37,7 @@
 
     {{-- Feedback --}}
     <x-ui.section-container id="feedback" title="Umpan Balik Pelanggan">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {{-- Customer Feedback --}}
             <div class="p-4 border border-primary rounded-xl h-full">
                 <div class="max-h-[400px] overflow-hidden overflow-y-auto">

@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-4">
     {{-- Filter --}}
-    <div class="grid grid-cols-2 gap-6">
+    <div class="grid grid-cols-2 gap-2 md:gap-4">
         <x-buttons.button variant="{{ $filter === 'scheduled' ? 'primary' : 'outline' }}"
             wire:click="setFilter('scheduled')">
             <span wire:loading wire:target="setFilter('scheduled')">

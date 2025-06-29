@@ -1,7 +1,7 @@
 <x-ui.section-container id="transaction-history">
     <div class="flex flex-col gap-4">
         {{-- Month Filter (Last 3 Month) --}}
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-2 md:gap-4">
             @foreach ($this->months as $month)
                 <x-buttons.button variant="{{ $selectedMonth == $month['month'] ? 'primary' : 'outline' }}"
                     wire:click="selectMonth('{{ $month['month'] }}')">

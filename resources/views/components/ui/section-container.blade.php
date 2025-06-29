@@ -4,7 +4,7 @@
             {{ $title }}
         </h2>
     @endif
-    <div class="bg-white w-full p-8 rounded-xl shadow-md">
+    <div class="bg-white w-full p-4 md:p-6 lg:p-8 rounded-xl shadow-md">
         {{ $slot }}
     </div>
 </section>

@@ -1,6 +1,6 @@
-<div class="relative flex flex-col gap-6">
+<div class="relative flex flex-col gap-6 w-full">
     {{-- Product List --}}
-    <div class="flex flex-col gap-3 max-h-50 overflow-y-auto pr-1">
+    <div class="flex flex-col gap-3 max-h-52 overflow-y-auto pr-1">
         @forelse ($items as $item)
             <div class="flex justify-between items-center border-b pb-2">
                 <div class="flex flex-col">
@@ -23,7 +23,6 @@
         <span>
             Subtotal <span class="font-normal">({{ $totalQuantity }} Barang)</span>
         </span>
-
         <span class="text-primary">
             Rp{{ number_format($subtotal, 0, ',', '.') }}
         </span>
@@ -31,7 +30,7 @@
 
     {{-- Buttons --}}
     @if ($totalQuantity > 0)
-        <div class="flex gap-2 justify-end">
+        <div class="flex gap-2 justify-center md:justify-end">
             <x-buttons.button wire:click="clearCart" variant="outline">
                 <span wire:loading.remove wire:target="clearCart">Hapus Semua</span>
                 <span wire:loading wire:target="clearCart">

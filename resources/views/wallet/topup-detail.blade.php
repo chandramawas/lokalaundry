@@ -6,6 +6,15 @@
             <div class="flex flex-col gap-1">
                 <div class="text-sm flex justify-between border-b py-2">
                     <span class="font-bold">
+                        Order ID
+                    </span>
+                    <span>
+                        {{ $topUp->order_id }}
+                    </span>
+                </div>
+
+                <div class="text-sm flex justify-between border-b py-2">
+                    <span class="font-bold">
                         Waktu Top Up
                     </span>
                     <span>

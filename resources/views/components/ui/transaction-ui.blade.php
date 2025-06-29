@@ -18,8 +18,9 @@
 
 @endphp
 
-<a href="{{ $href }}" class="border border-primary px-6 py-4 rounded-lg flex items-center gap-4 hover:bg-primary/10">
-    <div class="flex items-center justify-center size-12 rounded-full {{ $iconClass }}">
+<a href="{{ $href }}"
+    class="border border-primary px-6 py-4 rounded-lg flex flex-col md:flex-row md:items-center gap-4 hover:bg-primary/10 text-center md:text-left">
+    <div class="flex items-center justify-center size-12 rounded-full {{ $iconClass }} mx-auto md:mx-0">
         <i class="fa-solid {{ $icon }}"></i>
     </div>
 
@@ -35,7 +36,7 @@
         <p>{{ $date }}</p>
     </div>
 
-    <div class="flex flex-col items-end gap-1">
+    <div class="flex flex-col items-center md:items-end gap-1">
         <p class="font-medium">{{ $symbol }}Rp{{ number_format($amount, 0, ',', '.') }}</p>
         <i class="fa-solid fa-wallet {{ $walletClass }}"></i>
     </div>

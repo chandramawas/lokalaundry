@@ -1,6 +1,6 @@
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-6">
     <!-- City Filter-->
-    <div class="flex gap-4 justify-center">
+    <div class="flex flex-wrap gap-2 justify-center">
         @foreach ($cities as $city)
             <x-buttons.button wire:click="selectCity('{{ $city }}')" type="button"
                 variant="{{ $selectedCity === $city ? 'primary' : 'outline' }}">

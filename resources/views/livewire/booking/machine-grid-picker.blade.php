@@ -4,7 +4,7 @@
         @if ($machines)
             <div class="flex flex-col gap-2">
                 <h3 class="font-bold text-xl">Mesin Cuci</h3>
-                <div class="grid grid-cols-5 gap-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2">
                     @foreach ($machines as $machine)
                         @if ($machine['type'] === 'w')
                             <x-ui.machine-ui number="{{ $machine['number'] }}"
@@ -18,7 +18,7 @@
             {{-- Mesin Pengering --}}
             <div class="flex flex-col gap-2">
                 <h3 class="font-bold text-xl">Pengering</h3>
-                <div class="grid grid-cols-5 gap-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2">
                     @foreach ($machines as $machine)
                         @if ($machine['type'] === 'd')
                             <x-ui.machine-ui number="{{ $machine['number'] }}"
