@@ -24,4 +24,9 @@
     <x-ui.section-container id="booking-summary">
         <livewire:booking.booking-summary outletId="{{ $outlet->id }}" />
     </x-ui.section-container>
+
+    {{-- Accordion Ketentuan --}}
+    <x-ui.section-container id="terms">
+        <x-ui.terms.booking />
+    </x-ui.section-container>
 </x-layouts.app>

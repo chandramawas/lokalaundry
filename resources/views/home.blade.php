@@ -9,11 +9,14 @@
         {{-- Content --}}
         <div class="relative z-10 flex items-center justify-center w-full h-full px-6">
             <div class="text-center max-w-2xl flex flex-col gap-8">
-                <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text drop-shadow-lg tracking-tight animate-fade-in-up animate-infinite animate-duration-3000">
+                <h1
+                    class="text-5xl md:text-6xl font-extrabold text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text drop-shadow-lg tracking-tight animate-fade-in-up animate-infinite animate-duration-3000">
                     Laundry Made Easy
                 </h1>
-                <p class="text-lg md:text-xl font-medium text-primary/90 animate-fade-in animate-infinite animate-delay-200 tracking-wide drop-shadow-sm">
-                    Melakukan laundry menjadi lebih mudah dengan adanya <span class="font-bold text-blue-600">Booking Laundry</span>, tidak perlu menunggu.
+                <p
+                    class="text-lg md:text-xl font-medium text-primary/90 animate-fade-in animate-infinite animate-delay-200 tracking-wide drop-shadow-sm">
+                    Melakukan laundry menjadi lebih mudah dengan adanya <span class="font-bold text-blue-600">Booking
+                        Laundry</span>, tidak perlu menunggu.
                 </p>
                 <x-buttons.button href="{{ route('outlets') }}" class="w-fit mx-auto">
                     Booking Sekarang
@@ -27,8 +30,13 @@
         <livewire:services />
     </x-ui.section-container>
 
+    {{-- Accordion Ketentuan --}}
+    <x-ui.section-container id="terms">
+        <x-ui.terms.booking />
+    </x-ui.section-container>
+
     {{-- Feedback --}}
-    <x-ui.section-container id="feedback">
+    <x-ui.section-container id="feedback" title="Umpan Balik Pelanggan">
         <div class="grid grid-cols-2 gap-4">
             {{-- Customer Feedback --}}
             <div class="p-4 border border-primary rounded-xl h-full">

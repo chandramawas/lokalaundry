@@ -64,12 +64,10 @@ class StatsOverview extends BaseWidget
                 ->color('success'),
 
 
-            Stat::make('Top Up Hari Ini', 'Rp ' . number_format($totalTopUp, 0, ',', '.'))
-                ->description('Total saldo masuk')
+            Stat::make('Total Top Up Customer Hari Ini', 'Rp ' . number_format($totalTopUp, 0, ',', '.'))
                 ->color('primary'),
 
-            Stat::make('Saldo Dipakai Hari Ini', 'Rp ' . number_format($totalUsed, 0, ',', '.'))
-                ->description('Total saldo yang dibelanjakan')
+            Stat::make('Saldo Pemasukan Hari Ini', 'Rp ' . number_format($totalUsed, 0, ',', '.'))
                 ->color('warning'),
 
             Stat::make('Produk Terjual Hari Ini', $totalProductsSold)
