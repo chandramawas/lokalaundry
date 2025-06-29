@@ -88,6 +88,7 @@ Sebelum mulai, pastiin kalian udah install:
 * Pastikan MySQL dan Redis sudah berjalan kalau mau support cache & queue penuh.
 * Gak usah ganti `APP_KEY` kalau sudah generate.
 * Kalau mau seeder full uncomment code di `/database/seeders/DatabaseSeeder.php`.
+* Contoh data yang sudah di-input, import file `data-example.sql` ke MySQL lokal.
 
 ---
 
